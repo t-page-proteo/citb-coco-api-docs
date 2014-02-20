@@ -1,0 +1,110 @@
+FORMAT: 1A
+HOST: https://citbconstructioncompanion.com:8443
+
+# CITB CoCo
+CITB Construction Companion API
+
+**Note: all requests other than those specifically identified as** "Authorization header not required" **require an access token to be provided.**
+**This token is retrieved by logging in using the /token endpoint.**
+**It should then be passed in subsequent requests using the Authorization http header, for example the token *wxyz* would be provided as the header:**
+
+```
+Authorization: Bearer wxyz
+```
+
+**Note: responses are shown split over multiple lines for readability but the actual responses from the API do not contain this additional whitespace**
+
+# Group Token
+
+## Bearer token-based authentication [/token]
+### Retrieve an access token in order to log in [POST]
+Authorization header not required
++ Request (application/x-www-form-urlencoded)
+
+        grant_type=password&username=l.hogarth@example.com&password=password123&app_key=abcd
+
++ Response 200 (application/json)
+
+        {
+            "access_token":"wxyz",
+            "token_type":"bearer",
+            "expires_in":31535999,
+            "user_name":"l.hogarth@example.com",
+            "first_name":"Leon",
+            "last_name":"Hogarth",
+            "issued":"Tue, 11 Feb 2014 09:13:45 GMT",
+            "expires":"Wed, 11 Feb 2015 09:13:45 GMT"
+        }
+
++ Response 400 (application/json)
+
+        {"error":"non_validated","error_description":"The user account has not been validated."}
+
+        {"error":"invalid_grant","error_description":"The user name or password is incorrect."}
+
+# Group Account
+User account related resources
+
+## Account registration [/api/account/register]
+### Register a new user [POST]
+Authorization header not required
++ Request (application/json)
+
+        {
+            "FirstName": "Leon",http://docs.citbcocotest.apiary.io/
+            "LastName": "Hogarth",
+            "UserName": "l.hogarth@example.com",
+            "Password": "password123",
+            "ConfirmPassword": "password123"
+        }
+
++ Response 200
+
++ Response 400 (application/json)
+
+        {"Message":"The request is invalid.","ModelState": {"":["Name l.hogarth@example.com is already taken.","Email 'l.hogarth@example.com' is already taken."]}}
+        
+        {"Message":"The request is invalid.","ModelState":{"model.UserName":["The UserName field is not a valid e-mail address."]}}
+
+        {"Message":"The request is invalid.","ModelState":{"model.ConfirmPassword":["The password and confirmation password do not match."]}}
+        
+        {"Message":"The request is invalid.","ModelState":{"model.Password":["The Password must be at least 6 characters long."]}}
+
+## “Forgot my password” request [/api/account/resetpassword?username={userName}]
+This will cause an email to be sent to the specified user's email address with a link to a web page that will allow them to reset their password
+
++ Parameters
+    + userName (string, `l.hogarth@example.com`) ... Email address of the user.
+
+### Request reset password email [GET]
+Authorization header not required
++ Response 200
+
++ Response 400
+
+        {"Message":"The request is invalid.","ModelState":{"UserName":["The UserName field is not a valid e-mail address."]}}
+
++ Response 404
+
+## Reset the password using the reset-token [/api/account/resetpassword]
+Called by the web application when the user navigates to the url in the password reset email
+### Reset password [POST]
+Authorization header not required
+
++ Request (application/json)
+ 
+        {
+          "ResetToken": "abc",
+          "NewPassword": "password124",
+          "ConfirmPassword": "password124"
+        }
+ 
++ Response 200
+
++ Response 400
+
+        {"Message":"The request is invalid.","ModelState":{"model.ConfirmPassword":["The new password and confirmation password do not match."]}}
+
+        {"Message":"The request is invalid.","ModelState":{"model.NewPassword":["The New password must be at least 6 characters long."]}}
+
++ Response 404
