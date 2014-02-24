@@ -112,7 +112,7 @@ Authorization header not required
 # Group Organisation
 Organisation related resources
 
-## Organisation creation [/api/organisation/create]
+## Organisation creation [/api/organisation]
 ### Create an organisation [POST]
 Authorization header required
 
@@ -165,4 +165,76 @@ Currently no validation of image size (bytes or height/width) is implemented - t
 + Response 415
 
         {"Message":"The request entity's media type 'image/random' is not supported for this resource."}
+
+
+## Get organisation list [/api/organisation/getall]
+Retrieves a list of organisations. Currently this reflects all of the organisations created by the user, although this is liable to change in the near future.
+
+###Get organisation listing [GET]
+Authorization header required
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Id": 1,
+                "Name": "ACME Builders PLC",
+                "AddressLine1": "ACME Building",
+                "AddressLine2": "123 High Street",
+                "AddressLine3": null,
+                "Town": "Townville",
+                "County": "Countryshire",
+                "Postcode": "AB12 9YZ",
+                "Country": "Countryland",
+                "ContactTel":"01234 567 890"
+            },
+            {
+                "Id": 2,
+                "Name": "Cowboy Builders PLC",
+                "AddressLine1": "321 Main Road",
+                "AddressLine2": null,
+                "AddressLine3": null,
+                "Town": "Burywich",
+                "County": "Countyfolk",
+                "Postcode": "ZY98 1BA",
+                "Country": "Countryland",
+                "ContactTel": "09876 543 210"
+            },
+            {
+                "Id": 3,
+                "Name": "ACME Builders PLC",
+                "AddressLine1": "ACME Building",
+                "AddressLine2": "123 High Street",
+                "AddressLine3": null,
+                "Town": "Townville",
+                "County": "Countryshire",
+                "Postcode": "AB12 9YZ",
+                "Country": "Countryland",
+                "ContactTel":"01234 567 890"
+            }
+        ]
+
+## Get organisation [/api/organisation/{organisationId}]
+Retrieve details for a single organisation
+
++ Parameters
+    + organisationId (int, `123`) ... the organisation to be retrieved.
+
+###Get an organisation [GET]
+Authorization header required
+
++ Response 200 (application/json)
+
+        {
+            "Id": 1,
+            "Name": "ACME Builders PLC",
+            "AddressLine1": "ACME Building",
+            "AddressLine2": "123 High Street",
+            "AddressLine3": null,
+            "Town": "Townville",
+            "County": "Countryshire",
+            "Postcode": "AB12 9YZ",
+            "Country": "Countryland",
+            "ContactTel": "01234 567 890"
+        }
 
