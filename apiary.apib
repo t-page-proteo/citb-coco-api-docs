@@ -108,3 +108,34 @@ Authorization header not required
         {"Message":"The request is invalid.","ModelState":{"model.NewPassword":["The New password must be at least 6 characters long."]}}
 
 + Response 404
+
+# Group Organisation
+Organisation related resources
+
+## Organisation creation [/api/organisation/create]
+### Create an organisation [POST]
+Authorization header required
+
++ Request (application/json)
+
+        {
+            "Name": "ACME Builders PLC",
+            "AddressLine1": "ACME Building",
+            "AddressLine2": "123 High Street",
+            "Town": "Townville",
+            "County": "Countryshire",
+            "Postcode": "AB12 9YZ",
+            "Country": "Countryland",
+            "ContactTel": "01234 567 890"
+        }
+
++ Response 400
+
+        {
+            "Message":"The request is invalid.",
+            "ModelState":{
+                "model.Name":["The Organisation name field is required."]
+            }
+        }
+
++ Response 200
