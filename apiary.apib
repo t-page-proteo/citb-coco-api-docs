@@ -114,7 +114,7 @@ Organisation related resources
 
 ## Organisation creation [/api/organisation]
 ### Create an organisation [POST]
-Authorization header required
+There is currently no validation on the values provided (other than ensuring required fields are present) so creating duplicate organisations/organisations with the same details is possible although this may change in future.
 
 + Request (application/json)
 
@@ -172,7 +172,6 @@ Currently no validation of image size (bytes or height/width) is implemented - t
 Retrieves a list of organisations. Currently this reflects all of the organisations created by the user, although this is liable to change in the near future.
 
 ###Get organisation listing [GET]
-Authorization header required
 
 + Response 200 (application/json)
 
@@ -186,6 +185,7 @@ Authorization header required
                 "County": "Countryshire",
                 "Postcode": "AB12 9YZ",
                 "Country": "Countryland",
+                "ContactTel": "01234 567 890",
                 "ContactMobile": "07123 456 789"
             },
             {
@@ -197,7 +197,7 @@ Authorization header required
                 "County": null,
                 "Postcode": "ZY98 1BA",
                 "Country": null,
-                "ContactTel": null
+                "ContactTel": null,
                 "ContactMobile": null
             },
             {
@@ -209,7 +209,7 @@ Authorization header required
                 "County": "Countryshire",
                 "Postcode": "AB12 9YZ",
                 "Country": "Countryland",
-                "ContactTel": "01234 567 890"
+                "ContactTel": "01234 567 890",
                 "ContactMobile": "07123 456 789"
             }
         ]
@@ -221,7 +221,6 @@ Retrieve details for a single organisation
     + organisationId (int, `123`) ... the organisation to be retrieved.
 
 ###Get an organisation [GET]
-Authorization header required
 
 + Response 200 (application/json)
 
@@ -234,7 +233,7 @@ Authorization header required
             "County": "Countryshire",
             "Postcode": "AB12 9YZ",
             "Country": "Countryland",
-            "ContactTel": "01234 567 890"
+            "ContactTel": "01234 567 890",
             "ContactMobile": "07123 456 789"
         }
 
