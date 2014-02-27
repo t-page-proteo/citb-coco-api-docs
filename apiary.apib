@@ -170,15 +170,17 @@ Currently no validation of image size (bytes or height/width) is implemented - t
  
 + Response 200
 
+        {"LogoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg"}
+        
 + Response 400
 
-        {"Message":"Unsupported media content type"}
+        {"Message": "Unsupported media content type"}
         
 + Response 404
 
 + Response 415
 
-        {"Message":"The request entity's media type 'image/random' is not supported for this resource."}
+        {"Message": "The request entity's media type 'image/random' is not supported for this resource."}
 
 
 ## Get organisation list [/api/organisation/getall]
