@@ -72,6 +72,20 @@ Authorization header not required
         
         {"Message":"The request is invalid.","ModelState":{"model.Password":["The Password must be at least 6 characters long."]}}
 
+## Account validation [/api/account/validate]
+### Validate [POST]
+Called by the web application when the user navigates to the url in the New Account Validation email
+
++ Response 200
+
+        {"UserName":"l.hogarth@example.com","UserConfirmationToken":"abc"}
+
++ Response 400
+
+        {"Message":"The request is invalid.","ModelState":{"":["Invalid token."]}}
+        
++ Response 404
+
 ## “Forgot my password” request [/api/account/resetpassword?username={userName}]
 This will cause an email to be sent to the specified user's email address with a link to a web page that will allow them to reset their password
 
