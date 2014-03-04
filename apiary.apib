@@ -203,7 +203,7 @@ Currently no validation of image size (bytes or height/width) is implemented - t
 ## Get organisation list [/api/organisation/getall]
 Retrieves a list of organisations. Currently this reflects all of the organisations created by the user, although this is liable to change in the near future.
 
-###Get organisation listing [GET]
+### Get organisation listing [GET]
 
 + Response 200 (application/json)
 
@@ -246,13 +246,14 @@ Retrieves a list of organisations. Currently this reflects all of the organisati
             }
         ]
 
-## Get organisation [/api/organisation/{organisationId}]
-Retrieve details for a single organisation
+## Organisation get/update [/api/organisation/{organisationId}]
+Commands related to a single existing organisation
 
 + Parameters
-    + organisationId (int, `123`) ... the organisation to be retrieved.
+    + organisationId (int, `123`) ... the organisation to be retrieved or updated.
 
-###Get an organisation [GET]
+### Get an organisation [GET]
+Retrieve an organisation's details
 
 + Response 200 (application/json)
 
@@ -269,3 +270,29 @@ Retrieve details for a single organisation
             "ContactMobile": "07123 456 789"
         }
 
+### Update an organisation [PUT]
+
++ Request (application/json)
+
+        {
+            "Id": 1,
+            "Name": "ACME Builders PLC",
+            "AddressLine1": "ACME Building",
+            "AddressLine2": "123 High Street",
+            "Town": "Townville",
+            "County": "Countryshire",
+            "Postcode": "AB12 9YZ",
+            "Country": "Countryland",
+            "ContactTel": "01234 567 890",
+            "ContactMobile": "07123 456 789"
+        }
+
++ Response 204
+
++ Response 400
+
+        {"Message":"The request is invalid.","ModelState":{"bindingModel.Name":["The Organisation name field is required."]}}
+
++ Response 401
+
++ Response 404
