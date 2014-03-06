@@ -305,6 +305,29 @@ Retrieve an organisation's details
 # Group Document
 Document related resources and actions.
 
+## Document Types [/api/documenttypes]
+Document type related methods
+
+### Get document type list [GET]
+Retrieves the list of available document types
+
++ Response 200
+
+        [
+            {
+                "Id": 1,
+                "Name": "Risk assessment"
+            },
+            {
+                "Id": 2,
+                "Name": "Policy"
+            },
+            {
+                "Id": 3,
+                "Name": "Method statement"
+            },
+        ]
+
 ## Document [/api/document/{id}]
 Single document related methods
 
