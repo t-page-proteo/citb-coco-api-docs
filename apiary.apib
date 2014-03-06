@@ -327,7 +327,21 @@ Response status 401 if the user doesn't have access to the document. Response st
 Documents belonging to an organisation
 
 + Parameters
-    + id (int, `123`) ... Target organisation Id to attach the document to.
+    + id (int, `123`) ... Organisation Id
+
+### Get document list [GET]
+Retrieves a list of documents for the given organisation.
+
++ Response 200 (application/json)
+
+        [
+            {
+                // To follow
+            },
+            {
+                // To follow
+            }
+        ]
 
 ### Upload a document [POST]
 Response status 400 if the file extension is not an allowed type; the file extension is checked against list of allowed extensions - currently restricted to *.pdf, *.doc and *.docx
