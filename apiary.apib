@@ -303,7 +303,25 @@ Retrieve an organisation's details
 + Response 404
 
 # Group Document
-Document related resources and actions, details to follow
+Document related resources and actions.
+
+## Document [/api/document/{id}]
+Single document related methods
+
++ Parameters
+    + id (int, `123`) ... Document Id
+    
+### Set document details [PUT]
+Response status 401 if the user doesn't have access to the document. Response status 404 if the document is not found.
+
++ Request (application/json)
+
+        {
+            // To follow
+        }
+
++ Response 200
+        
 
 ## Organisation Document [/api/document/organisation/{id}]
 Documents belonging to an organisation
@@ -318,7 +336,7 @@ Response status 401 if the user doesn't have access to the organisation. Respons
 
 + Request (application/pdf or application/msword or application/vnd.openxmlformats-officedocument.wordprocessingml.document)
  
-        <body contains image binary content>
+        <body contains document binary content>
 
 + Response 200
 
