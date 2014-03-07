@@ -340,7 +340,9 @@ Response status 401 if the user doesn't have access to the document. Response st
 + Request (application/json)
 
         {
-            // To follow
+            "DocumentType": 1,
+            "Description": "My risk assessment",
+            "OriginalFilename": "My Risk Assessment.docx"
         }
 
 + Response 200
@@ -359,10 +361,22 @@ Retrieves a list of documents for the given organisation.
 
         [
             {
-                // To follow
+                "Id": 1,
+                "DocumentType": 1,
+                "DocumentTypeName": "Risk assessment",
+                "Url": "https://citbconstructioncompanion.com:8443/organisationdocuments/42dab92b-5814-4989-948a-717678f9cd3f.docx",
+                "Description": "My risk assessment",
+                "OriginalFilename": "My Risk Assessment.docx",
+                "CreateDateTime": "2014-03-07T12:04:17.403",
             },
             {
-                // To follow
+                "Id": 2,
+                "DocumentType": 2,
+                "DocumentTypeName": "Policy",
+                "Url": "https://citbconstructioncompanion.com:8443/organisationdocuments/42dab92b-5814-4989-948a-717678f9cd3f.pdf",
+                "Description": "My safety policy",
+                "OriginalFilename": "My Safety Policy.pdf",
+                "CreateDateTime": "2014-03-07T12:04:17.403",
             }
         ]
 
