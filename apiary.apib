@@ -381,7 +381,7 @@ Retrieves a list of documents for the given organisation.
         ]
 
 ### Upload a document [POST]
-Response status 400 if the file extension is not an allowed type; the file extension is checked against list of allowed extensions - currently restricted to *.pdf, *.doc and *.docx
+Response status 415 if the file extension is not an allowed type; the file extension is checked against list of allowed extensions - currently restricted to *.pdf, *.doc and *.docx
 
 Response status 401 if the user doesn't have access to the organisation. Response status 404 if the organisation is not found.
 
@@ -396,11 +396,8 @@ Response status 401 if the user doesn't have access to the organisation. Respons
             "Url": "https://citbconstructioncompanion.com:8443/organisationdocuments/42dab92b-5814-4989-948a-717678f9cd3f.pdf"
         }
         
-+ Response 400
-
-        {"Message": "Unsupported document type"}
-        
 + Response 401
 
 + Response 404
 
++ Response 415
