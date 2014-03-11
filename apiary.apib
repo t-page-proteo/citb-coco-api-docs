@@ -347,7 +347,19 @@ Response status 401 if the user doesn't have access to the document. Response st
 
 + Response 200
         
+## Document [/api/document/{id}/content]
+Download a document
 
++ Parameters
+    + id (int, `123`) ... Document Id
+    
+### Download [GET]
+Response status 401 if the user doesn't have access to the document. Response status 404 if the document is not found.
+
++ Response 202
+
+        "<body contains image binary content>"
+        
 ## Organisation Document [/api/document/organisation/{id}]
 Documents belonging to an organisation
 
@@ -356,6 +368,7 @@ Documents belonging to an organisation
 
 ### Get document list [GET]
 Retrieves a list of documents for the given organisation.
+Please note that the "Url" value returned is a secure Url and therefore the document can only be downloaded via this url if requested with an "Authorization: Bearer -token-" header.
 
 + Response 200 (application/json)
 
@@ -364,7 +377,7 @@ Retrieves a list of documents for the given organisation.
                 "Id": 1,
                 "DocumentType": 1,
                 "DocumentTypeName": "Risk assessment",
-                "Url": "https://citbconstructioncompanion.com:8443/organisationdocuments/42dab92b-5814-4989-948a-717678f9cd3f.docx",
+                "Url": "https://citbconstructioncompanion.com:8443/api/document/1/content",
                 "Description": "My risk assessment",
                 "OriginalFilename": "My Risk Assessment.docx",
                 "CreateDateTime": "2014-03-07T12:04:17.403",
@@ -373,7 +386,7 @@ Retrieves a list of documents for the given organisation.
                 "Id": 2,
                 "DocumentType": 2,
                 "DocumentTypeName": "Policy",
-                "Url": "https://citbconstructioncompanion.com:8443/organisationdocuments/42dab92b-5814-4989-948a-717678f9cd3f.pdf",
+                "Url": "https://citbconstructioncompanion.com:8443/api/document/2/content",
                 "Description": "My safety policy",
                 "OriginalFilename": "My Safety Policy.pdf",
                 "CreateDateTime": "2014-03-07T12:04:17.403",
@@ -381,6 +394,8 @@ Retrieves a list of documents for the given organisation.
         ]
 
 ### Upload a document [POST]
+Please note that the "Url" value returned is a secure Url and therefore the document can only be downloaded via this url if requested with an "Authorization: Bearer -token-" header.
+
 Response status 415 if the file extension is not an allowed type; the file extension is checked against list of allowed extensions - currently restricted to *.pdf, *.doc and *.docx
 
 Response status 401 if the user doesn't have access to the organisation. Response status 404 if the organisation is not found.
@@ -393,7 +408,7 @@ Response status 401 if the user doesn't have access to the organisation. Respons
 
         {
             "Id": 123,
-            "Url": "https://citbconstructioncompanion.com:8443/organisationdocuments/42dab92b-5814-4989-948a-717678f9cd3f.pdf"
+            "Url": "https://citbconstructioncompanion.com:8443/api/document/123/content"
         }
         
 + Response 401
