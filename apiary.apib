@@ -315,6 +315,69 @@ Retrieve an organisation's details
 
 + Response 404
 
+# Group Employee
+Employee (or "stub user") related resources and actions. Note that strictly speaking these actions are a subset or organisation.
+
+## Employee [/api/organisation/{organisationId}/employee]
+Individual employee related methods
+
++ Parameters
+    + organisationId (int, `123`) ... the organisation to be retrieved or updated.
+
+### Create an employee [POST]
+There is currently no validation on the values provided (other than ensuring required fields are present) so creating duplicate employees with the same details is possible although this may change in future.
+Response status 404 if the organisation is not found, or 401 if the requesting user cannot modify the organisation 
+
++ Request (application/json)
+
+        {
+            "FirstName": "Robert",
+            "LastName": "Builder",
+            "Email": "robert.t.builder@example.com",
+            "AddressLine1": "Flat A",
+            "AddressLine2": "123 Culdesac Drive",
+            "Town": "Townville",
+            "County": "Countyshire",
+            "Postcode": "ZY98 1BA",
+            "Country": "Countryland",
+            "ContactTel": "01234 567 890",
+            "ContactMobile": "07123 456 789",
+            "NationalInsuranceNumber": "AB112233Z"
+        }
+
++ Response 400
+
+        {
+            "Message":"The request is invalid.",
+            "ModelState":{
+                "model.Name":["The First name field is required."]
+            }
+        }
+
++ Response 401
+
++ Response 404
+
++ Response 200
+
+        {
+            "Id": 456,
+            "Email": "robert.t.builder@example.com",
+            "FirstName": "Robert",
+            "LastName": "Builder",
+            "AddressLine1": "Flat A",
+            "AddressLine2": "123 Culdesac Drive",
+            "Town": "Townville",
+            "County": "Countyshire",
+            "Postcode": "ZY98 1BA",
+            "Country": "Countryland",
+            "ContactTel": "01234 567 890",
+            "ContactMobile": "07123 456 789",
+            "NationalInsuranceNumber": "AB112233Z",
+            "IsOwner": false,
+            "IsRegisteredUser": false
+        }
+
 # Group Document
 Document related resources and actions.
 
