@@ -316,7 +316,7 @@ Retrieve an organisation's details
 + Response 404
 
 # Group Employee
-Employee related resources and actions. Note that strictly speaking these actions are a subset or organisation.
+Employee related resources and actions. Note that strictly speaking these actions are a subset of organisation.
 
 ## Get employee list [/api/organisation/{organisationId}/employees]
 Retrieves a list of employees who work with the organisation.
@@ -442,7 +442,61 @@ Response status 404 if the organisation is not found, or 401 if the requesting u
             "IsRegisteredUser": false
         }
 
+## Update or retrieve an existing employee [/api/organisation/{organisationId}/employee/{employeeId}]
+Methods to update or retrieve an existing employee
 
++ Parameters
+    + organisationId (int, `123`) ... the organisation to which the employee belongs
+    + employeeId (int, `123`) ... the employee to which the request relates
+
+### Get an employee [GET]
+Retrieve an employee record. Throws a 404 if the organisation and/or employee not found.
+
++ Response 200 (application/json)
+
+        {
+            "Id": 456,
+            "Email": "l.hogarth@example.com",
+            "FirstName": "Leon",
+            "LastName": "Hogarth",
+            "AddressLine1": "Flat A",
+            "AddressLine2": "123 Culdesac Drive",
+            "Town": "Townville",
+            "County": "Countyshire",
+            "Postcode": "ZY98 1BA",
+            "Country": "Countryland",
+            "ContactTel": "01234 567 890",
+            "ContactMobile": "07123 456 789",
+            "NationalInsuranceNumber": "AB112233Z",
+            "IsOwner": false,
+            "IsRegisteredUser": false
+        }
+
++ Response 404
+
+### Update an employee [PUT]
+Update an employee record. Throws a 404 if the organisation and/or employee not found.
+
++ Request (application/json)
+
+        {
+            "FirstName": "Bobbie",
+            "LastName": "Builder",
+            "Email": "robert.t.builder@example.com",
+            "AddressLine1": "Flat A",
+            "AddressLine2": "123 Culdesac Drive",
+            "Town": "Townville",
+            "County": "Countyshire",
+            "Postcode": "ZY98 1BA",
+            "Country": "Countryland",
+            "ContactTel": "01234 567 890",
+            "ContactMobile": "07123 456 789",
+            "NationalInsuranceNumber": "ZY998877A"
+        }
+
++ Response 204
+
++ Response 404
 
 # Group Document
 Document related resources and actions.
