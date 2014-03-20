@@ -316,13 +316,77 @@ Retrieve an organisation's details
 + Response 404
 
 # Group Employee
-Employee (or "stub user") related resources and actions. Note that strictly speaking these actions are a subset or organisation.
+Employee related resources and actions. Note that strictly speaking these actions are a subset or organisation.
 
-## Employee [/api/organisation/{organisationId}/employee]
+## Get employee list [/api/organisation/{organisationId}/employees]
+Retrieves a list of employees who work with the organisation.
+
++ Parameters
+    + organisationId (int, `123`) ... the organisation to which the request relates
+    
+### Get employee listing [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Id": 1,
+                "Email": "robert.t.builder@example.com",
+                "FirstName": "Robert",
+                "LastName": "Builder",
+                "AddressLine1": "Flat A",
+                "AddressLine2": "123 Culdesac Drive",
+                "Town": "Townville",
+                "County": "Countyshire",
+                "Postcode": "ZY98 1BA",
+                "Country": "Countryland",
+                "ContactTel": "01234 567 890",
+                "ContactMobile": "07123 456 789",
+                "NationalInsuranceNumber": "AB112233Z",
+                "IsOwner": true,
+                "IsRegisteredUser": true
+            },
+            {
+                "Id": 2,
+                "Email": "the.wraight.stuff@example.com",
+                "FirstName": "Simon",
+                "LastName": "Wraight",
+                "AddressLine1": "Flat B",
+                "AddressLine2": "124 Culdesac Drive",
+                "Town": "Townville",
+                "County": "Countyshire",
+                "Postcode": "ZY98 2BA",
+                "Country": "Countryland",
+                "ContactTel": "01234 567 891",
+                "ContactMobile": "07123 456 788",
+                "NationalInsuranceNumber": "AB112233Z",
+                "IsOwner": false,
+                "IsRegisteredUser": true
+            },
+            {
+                "Id": 3,
+                "Email": "bennie.bentley@example.com",
+                "FirstName": "Bernard",
+                "LastName": "Bentley",
+                "AddressLine1": "Flat C",
+                "AddressLine2": "125 Culdesac Drive",
+                "Town": "Townville",
+                "County": "Countyshire",
+                "Postcode": "ZY98 3BA",
+                "Country": "Countryland",
+                "ContactTel": "01234 567 892",
+                "ContactMobile": "07123 456 787",
+                "NationalInsuranceNumber": "AB112233Z",
+                "IsOwner": false,
+                "IsRegisteredUser": false
+            }
+        ]
+
+## Create an employee [/api/organisation/{organisationId}/employee]
 Individual employee related methods
 
 + Parameters
-    + organisationId (int, `123`) ... the organisation to be retrieved or updated.
+    + organisationId (int, `123`) ... the organisation to which the employee will belong
 
 ### Create an employee [POST]
 There is currently no validation on the values provided (other than ensuring required fields are present) so creating duplicate employees with the same details is possible although this may change in future.
@@ -377,6 +441,8 @@ Response status 404 if the organisation is not found, or 401 if the requesting u
             "IsOwner": false,
             "IsRegisteredUser": false
         }
+
+
 
 # Group Document
 Document related resources and actions.
