@@ -358,7 +358,7 @@ Response status 401 if the user doesn't have access to the document. Response st
             "OriginalFilename": "My Risk Assessment.docx"
         }
 
-+ Response 200
++ Response 204
         
 ## Document [/api/document/{id}/content]
 Download a document
@@ -433,3 +433,16 @@ Response status 401 if the user doesn't have access to the organisation. Respons
 + Response 404
 
 + Response 415
+
+### Delete a document [DELETE]
+Flags a document as having been deactivated. Once deactivated it will not be returned by api calls.
+
+Response status 404 if the document is not found.
+
+Response status 401 if the user does not have access to delete the document.
+
++ Response 204
+
++ Response 404
+
++ Response 401
