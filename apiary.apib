@@ -57,11 +57,11 @@ User account related resources
 
 ## Account registration [/api/account/register]
 
-+ **FirstName** (string)
-+ **LastName** (string)
-+ **UserName** (string)
-+ **Password** (string, minimum 6 characters, maximum 100)
-+ **ConfirmPassword** (string, minimum 6 characters, maximum 100)
++ **FirstName (string)**
++ **LastName (string)**
++ **UserName (string)**
++ **Password (string, minimum 6 characters, maximum 100)**
++ **ConfirmPassword (string, minimum 6 characters, maximum 100)**
 
 ### Register a new user [POST]
 Authorization header not required
@@ -121,9 +121,9 @@ Authorization header not required
 ## Reset the password using the reset-token [/api/account/resetpassword]
 Called by the web application when the user navigates to the url in the password reset email
 
-+ **ResetToken** (string)
-+ **NewPassword** (string, minimum 6 characters, maximum 100)
-+ **ConfirmPassword** (string, minimum 6 characters, maximum 100)
++ **ResetToken (string)**
++ **NewPassword (string, minimum 6 characters, maximum 100)**
++ **ConfirmPassword (string, minimum 6 characters, maximum 100)**
 
 ### Reset password [POST]
 Authorization header not required
@@ -151,12 +151,12 @@ Organisation related resources
 
 ## Organisation creation [/api/organisation]
 
-+ **Name** (string, 200 characters)
-+ **AddressLine1** (string, 100 characters)
++ **Name (string, 200 characters)**
++ **AddressLine1 (string, 100 characters)**
 + AddressLine2 (string, 100 characters)
-+ **Town** (string, 100 characters)
++ **Town (string, 100 characters)**
 + County (string, 100 characters)
-+ **Postcode** (string, 10 characters)
++ **Postcode (string, 10 characters)**
 + Country (string, 100 characters)
 + ContactTel (string, 20 characters)
 + ContactMobile (string, 20 characters)
@@ -421,8 +421,8 @@ Retrieves a list of employees who work with the organisation.
 ## Create an employee [/api/organisation/{organisationId}/employee]
 Individual employee related methods
 
-+ **FirstName** (string)
-+ **LastName** (string)
++ **FirstName (string)**
++ **LastName (string)**
 + Email (string)
 + AddressLine1 (string, 100 characters)
 + AddressLine2 (string, 100 characters)
@@ -576,7 +576,7 @@ Retrieves the list of available document types
 ## Document [/api/document/{id}]
 Single document related methods
 
-+ **DocumentType** (int)
++ **DocumentType (int)**
 + Description (string)
 + OriginalFilename (string)
 
