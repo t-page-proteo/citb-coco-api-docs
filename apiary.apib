@@ -56,6 +56,13 @@ Authorization header not required
 User account related resources
 
 ## Account registration [/api/account/register]
+
++ **FirstName** (string)
++ **LastName** (string)
++ **UserName** (string)
++ **Password** (string, minimum 6 characters, maximum 100)
++ **ConfirmPassword** (string, minimum 6 characters, maximum 100)
+
 ### Register a new user [POST]
 Authorization header not required
 + Request (application/json)
@@ -113,6 +120,11 @@ Authorization header not required
 
 ## Reset the password using the reset-token [/api/account/resetpassword]
 Called by the web application when the user navigates to the url in the password reset email
+
++ **ResetToken** (string)
++ **NewPassword** (string, minimum 6 characters, maximum 100)
++ **ConfirmPassword** (string, minimum 6 characters, maximum 100)
+
 ### Reset password [POST]
 Authorization header not required
 
@@ -138,6 +150,17 @@ Authorization header not required
 Organisation related resources
 
 ## Organisation creation [/api/organisation]
+
++ **Name** (string, 200 characters)
++ **AddressLine1** (string, 100 characters)
++ AddressLine2 (string, 100 characters)
++ **Town** (string, 100 characters)
++ County (string, 100 characters)
++ **Postcode** (string, 10 characters)
++ Country (string, 100 characters)
++ ContactTel (string, 20 characters)
++ ContactMobile (string, 20 characters)
+
 ### Create an organisation [POST]
 There is currently no validation on the values provided (other than ensuring required fields are present) so creating duplicate organisations/organisations with the same details is possible although this may change in future.
 
@@ -263,7 +286,7 @@ Retrieves a list of organisations. Currently this reflects all of the organisati
         ]
 
 ## Organisation get/update [/api/organisation/{organisationId}]
-Commands related to a single existing organisation
+Commands related to a single existing organisation. For updates, required fields/lengths match those defined for the create organisation method (see above).
 
 + Parameters
     + organisationId (int, `123`) ... the organisation to be retrieved or updated.
@@ -398,6 +421,19 @@ Retrieves a list of employees who work with the organisation.
 ## Create an employee [/api/organisation/{organisationId}/employee]
 Individual employee related methods
 
++ **FirstName** (string)
++ **LastName** (string)
++ Email (string)
++ AddressLine1 (string, 100 characters)
++ AddressLine2 (string, 100 characters)
++ Town (string, 100 characters)
++ County (string, 100 characters)
++ Postcode (string, 10 characters)
++ Country (string, 100 characters)
++ ContactTel (string, 20 characters)
++ ContactMobile (string, 20 characters)
++ NationalInsuranceNumber (string)
+
 + Parameters
     + organisationId (int, `123`) ... the organisation to which the employee will belong
 
@@ -456,7 +492,7 @@ Response status 404 if the organisation is not found, or 401 if the requesting u
         }
 
 ## Update or retrieve an existing employee [/api/organisation/{organisationId}/employee/{employeeId}]
-Methods to update or retrieve an existing employee
+Methods to update or retrieve an existing employee. For updates, required fields/lengths match those defined for the create employee method (see above).
 
 + Parameters
     + organisationId (int, `123`) ... the organisation to which the employee belongs
@@ -539,6 +575,10 @@ Retrieves the list of available document types
 
 ## Document [/api/document/{id}]
 Single document related methods
+
++ **DocumentType** (int)
++ Description (string)
++ OriginalFilename (string)
 
 + Parameters
     + id (int, `123`) ... Document Id
