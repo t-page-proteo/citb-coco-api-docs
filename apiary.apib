@@ -418,7 +418,7 @@ Retrieves a list of employees who work with the organisation.
             }
         ]
 
-## Create an employee [/api/organisation/{organisationId}/employee]
+## Create a new employee [/api/organisation/{organisationId}/employee]
 Individual employee related methods
 
 + **FirstName (string)**
@@ -544,6 +544,26 @@ Update an employee record. Throws a 404 if the organisation and/or employee not 
         }
 
 + Response 204
+
++ Response 404
+
+## Invite an existing employee [/api/organisation/{organisationId}/employee/{employeeId}/invite]
+Use this to invite a "stub" employee to join CITB and associate themselves with the organisation
+
++ Parameters
+    + organisationId (int, `123`) ... the organisation to which the employee belongs
+    + employeeId (int, `123`) ... the employee to which the request relates
+
+### Invite an employee [POST]
+Send an e-mail to the employee to work with the organisation. Response status 404 if the organisation/employee not found, 403 if the employee is already a full (registered) user and 400 if the employee record doesn't have an e-mail address value.
+
++ Response 200
+
++ Response 400
+
+        {"Message": "No email address found."}
+
++ Response 403
 
 + Response 404
 
