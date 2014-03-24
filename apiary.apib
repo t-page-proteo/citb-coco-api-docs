@@ -146,7 +146,7 @@ Authorization header not required
 
 + Response 404
 
-## User Photo [/api/Account/Photo]
+## User Photo [/api/account/photo]
 Set the User's photo
 
 ### User Photo [POST]
@@ -271,7 +271,8 @@ Retrieves a list of organisations. Currently this reflects all of the organisati
                 "ContactTel": "01234 567 890",
                 "ContactMobile": "07123 456 789"
                 "LogoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
-                "CanEdit": true
+                "CanEdit": true,
+                "IsOwner": true
             },
             {
                 "Id": 2,
@@ -285,7 +286,8 @@ Retrieves a list of organisations. Currently this reflects all of the organisati
                 "ContactTel": null,
                 "ContactMobile": null
                 "LogoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02ea45447ad3a.jpg",
-                "CanEdit": true
+                "CanEdit": false,
+                "IsOwner": false
             },
             {
                 "Id": 3,
@@ -299,7 +301,8 @@ Retrieves a list of organisations. Currently this reflects all of the organisati
                 "ContactTel": "01234 567 890",
                 "ContactMobile": "07123 456 789"
                 "LogoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02ea786647ad3a.jpg",
-                "CanEdit": true
+                "CanEdit": false,
+                "IsOwner": false
             }
         ]
 
@@ -326,7 +329,8 @@ Retrieve an organisation's details
             "ContactTel": "01234 567 890",
             "ContactMobile": "07123 456 789",
             "LogoUrl": "https://citbconstructioncompanion.com:8443/userimages/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
-            "CanEdit": true
+            "CanEdit": true,
+            "IsOwner": true
         }
 
 ### Update an organisation [PUT]
@@ -385,6 +389,7 @@ Retrieves a list of employees who work with the organisation.
         [
             {
                 "Id": 1,
+                "OrganisationId": 123,
                 "Email": "robert.t.builder@example.com",
                 "FirstName": "Robert",
                 "LastName": "Builder",
@@ -402,6 +407,7 @@ Retrieves a list of employees who work with the organisation.
             },
             {
                 "Id": 2,
+                "OrganisationId": 123,
                 "Email": "the.wraight.stuff@example.com",
                 "FirstName": "Simon",
                 "LastName": "Wraight",
@@ -419,6 +425,7 @@ Retrieves a list of employees who work with the organisation.
             },
             {
                 "Id": 3,
+                "OrganisationId": 123,
                 "Email": "bennie.bentley@example.com",
                 "FirstName": "Bernard",
                 "LastName": "Bentley",
