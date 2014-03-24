@@ -146,6 +146,24 @@ Authorization header not required
 
 + Response 404
 
+## User Photo [/api/Account/Photo]
+Set the User's photo
+
+### User Photo [POST]
+Response status 400 if the media type is not valid.
+
++ Request (image/jpeg or image/gif or image/png)
+        
+        <body contains iamge binary content>
+
++ Response 200
+
+        {"PhotoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg"}
++ Response 400
+
+        {"Message": "Unsupported media content type"}
+
+
 # Group Organisation
 Organisation related resources
 
