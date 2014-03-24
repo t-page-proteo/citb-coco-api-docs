@@ -585,6 +585,38 @@ Send an e-mail to the employee to work with the organisation. Response status 40
 
 + Response 404
 
+## Set an employee photo [/api/organisation/{organisationId/employee/{employeeId}/photo]
+Use this to upload a photo for a "stub" employee.
+
++ Parameters
+    + organisationId (int, `123`) ... the organisation to which the employee belongs
+    + employeeId (int, `123`) ... the employee to which the request relates
+
+### Employee Photo [POST]
+Response status 404 if the organisation or employee can not be found.
+Response status 403 if the employee has been registered.
+Response status 401 if the user does not have access to update the employee.
+Response status 400 if the media type is not valid.
+
++ Request (image/jpeg or image/gif or image/png)
+        
+        <body contains iamge binary content>
+
++ Response 200
+
+        {"PhotoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg"}
+        
++ Response 400
+
+        {"Message": "Unsupported media content type"}
+        
++ Response 404
+ 
++ Response 403
+ 
++ Response 401
+ 
+
 # Group Document
 Document related resources and actions.
 
