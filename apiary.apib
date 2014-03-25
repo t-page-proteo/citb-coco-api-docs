@@ -313,7 +313,7 @@ Commands related to a single existing organisation. For updates, required fields
     + organisationId (int, `123`) ... the organisation to be retrieved or updated.
 
 ### Get an organisation [GET]
-Retrieve an organisation's details
+Retrieve an organisation's details. Response 401 if the requesting user doesn't have a relationship with the organisation.
 
 + Response 200 (application/json)
 
@@ -332,6 +332,8 @@ Retrieve an organisation's details
             "CanEdit": true,
             "IsOwner": true
         }
+
++ Response 401
 
 ### Update an organisation [PUT]
 
@@ -377,7 +379,7 @@ Response status 401 if the user does not have access to delete the organisation.
 Employee related resources and actions. Note that strictly speaking these actions are a subset of organisation.
 
 ## Get employee list [/api/organisation/{organisationId}/employees]
-Retrieves a list of employees who work with the organisation.
+Retrieves a list of employees who work with the organisation. Response 401 if the requesting user doesn't have a relationship with the organisation.
 
 + Parameters
     + organisationId (int, `123`) ... the organisation to which the request relates
@@ -442,6 +444,8 @@ Retrieves a list of employees who work with the organisation.
                 "IsRegisteredUser": false
             }
         ]
+        
++ Response 401
 
 ## Create a new employee [/api/organisation/{organisationId}/employee]
 Individual employee related methods
@@ -525,7 +529,7 @@ Methods to update or retrieve an existing employee. For updates, required fields
     + employeeId (int, `123`) ... the employee to which the request relates
 
 ### Get an employee [GET]
-Retrieve an employee record. Throws a 404 if the organisation and/or employee not found.
+Retrieve an employee record. Throws a 404 if the organisation and/or employee not found. Response 401 if the requesting user doesn't have access to modify/edit the organisation (ie. the owner) or the user is not the employee him/herself.
 
 + Response 200 (application/json)
 
@@ -548,10 +552,12 @@ Retrieve an employee record. Throws a 404 if the organisation and/or employee no
             "IsRegisteredUser": false
         }
 
++ Response 401
+
 + Response 404
 
 ### Update an employee [PUT]
-Update an employee record. Throws a 404 if the organisation and/or employee not found.
+Update an employee record. Throws a 404 if the organisation and/or employee not found. Response 401 if requesting user doesn't have write access to the organisation (ie. non-owner)
 
 + Request (application/json)
 
@@ -571,6 +577,8 @@ Update an employee record. Throws a 404 if the organisation and/or employee not 
         }
 
 + Response 204
+
++ Response 401
 
 + Response 404
 
