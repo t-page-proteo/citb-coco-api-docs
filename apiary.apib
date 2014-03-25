@@ -163,6 +163,64 @@ Response status 400 if the media type is not valid.
 
         {"Message": "Unsupported media content type"}
 
+##User Details get/update [/api/account/UserData]
+
++ FirstName (string)
++ LastName (string)
++ AddressLine1 (string, 100 characters)
++ AddressLine2 (string, 100 characters)
++ Town (string, 100 characters)
++ County (string, 100 characters)
++ Postcode (string, 10 characters)
++ Country (string, 100 characters)
++ ContactTel (string, 20 characters)
++ ContactMobile (string, 20 characters)
++ NationalInsuranceNumber (string)
+
+### Get a user's details [GET]
+Retreive user's details. Response 404 if the user does not exist.
++ Response 200 (appication/json)
+
+        {
+            "FirstName": "Robert",
+            "LastName": "Builder",
+            "AddressLine1": "Flat A",
+            "AddressLine2": "321 Culdesac Drive",
+            "Town": "Townville",
+            "County": "Countyshire",
+            "Postcode": "ZY98 1BA",
+            "Country": "Countryland",
+            "ContactTel": "01234 987 654",
+            "ContactMobile": "07890 654 321",
+            "NationalInsuranceNumber": "AB 11 22 33 Z"
+        }
+
++ Response 404
+
+### Update a User [PUT]
+Set the user's details. Response 404 if the user does not exist. 
+
++ Request (application/json)
+    
+        {
+            "FirstName": "Robert",
+            "LastName": "Builder",
+            "AddressLine1": "Flat A",
+            "AddressLine2": "321 Culdesac Drive",
+            "Town": "Townville",
+            "County": "Countyshire",
+            "Postcode": "ZY98 1BA",
+            "Country": "Countryland",
+            "ContactTel": "01234 987 654",
+            "ContactMobile": "07890 654 321",
+            "NationalInsuranceNumber": "AB 11 22 33 Z"
+        }
+
++ Response 204
+
++ Response 404
+
+
 
 # Group Organisation
 Organisation related resources
