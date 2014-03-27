@@ -569,7 +569,7 @@ Response status 404 if the organisation is not found, or 401 if the requesting u
 + Response 200
 
         {
-            "Id": 456,
+            "Id": 123,
             "OrganisationId": 123,
             "Email": "robert.t.builder@example.com",
             "FirstName": "Robert",
@@ -582,9 +582,11 @@ Response status 404 if the organisation is not found, or 401 if the requesting u
             "Country": "Countryland",
             "ContactTel": "01234 567 890",
             "ContactMobile": "07123 456 789",
+            "PhotoUrl": null,
             "NationalInsuranceNumber": "AB112233Z",
             "IsOwner": false,
-            "IsRegisteredUser": false
+            "IsRegisteredUser": false,
+            "CanEdit": true
         }
 
 ## Update or retrieve an existing employee [/api/organisation/{organisationId}/employee/{employeeId}]
