@@ -745,7 +745,7 @@ Single document related methods
     + id (int, `123`) ... Document Id
     
 ### Set document details [PUT]
-Response status 401 if the user doesn't have access to the document. Response status 404 if the document is not found.
+Response status 401 if the user doesn't have access to the document. Response status 404 if the document is not found. Response status 410 if the document has been deleted/deactivated.
 
 + Request (application/json)
 
@@ -756,6 +756,12 @@ Response status 401 if the user doesn't have access to the document. Response st
         }
 
 + Response 204
+
++ Response 401
+
++ Response 404
+
++ Response 410
         
 
 ### Delete a document [DELETE]
@@ -778,11 +784,17 @@ Download a document
     + id (int, `123`) ... Document Id
     
 ### Download [GET]
-Response status 401 if the user doesn't have access to the document. Response status 404 if the document is not found.
+Response status 401 if the user doesn't have access to the document. Response status 404 if the document is not found. Response status 410 if the document has been deleted/deactivated.
 
 + Response 200
 
         "<body contains image binary content>"
+
++ Response 401
+
++ Response 404
+
++ Response 410
         
 ## Organisation Document [/api/document/organisation/{id}]
 Documents belonging to an organisation
