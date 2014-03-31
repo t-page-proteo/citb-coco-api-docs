@@ -220,6 +220,15 @@ Set the user's details. Response 404 if the user does not exist.
 
 + Response 204
 
++ Reponse 400
+
+        {
+            "Message":"The request is invalid.",
+            "ModelState":{
+                "model.Name":["The First name field is required."]
+            }
+        }
+
 + Response 404
 
 
