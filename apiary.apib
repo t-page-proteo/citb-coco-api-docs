@@ -289,7 +289,7 @@ Set the organisation's logo
     + organisationId (int, `123`) ... id returned on the creation of a new organisation.
 
 ### Set the logo [POST]
-Response status 404 if the organisation is not found.  
+Response status 404 if the organisation is not found.  Response 410 if the organisation has been deactivated.
 The image is validated to ensure it is a valid image of the specified content type - if this is not the case then currently a 500 (internal server error) response is sent - this will be amended to be a more appropriate status code.  
 Currently no validation of image size (bytes or height/width) is implemented - this may be added later.
 + Request (image/jpeg or image/gif or image/png)
@@ -305,6 +305,8 @@ Currently no validation of image size (bytes or height/width) is implemented - t
         {"Message": "Unsupported media content type"}
         
 + Response 404
+
++ Response 410
 
 + Response 415
 
@@ -373,7 +375,7 @@ Commands related to a single existing organisation. For updates, required fields
     + organisationId (int, `123`) ... the organisation to be retrieved or updated.
 
 ### Get an organisation [GET]
-Retrieve an organisation's details. Response 401 if the requesting user doesn't have a relationship with the organisation.
+Retrieve an organisation's details. Response 401 if the requesting user doesn't have a relationship with the organisation. Response 404 if the organisation doesn't exist. Response 410 if the organisation has been deactivated.
 
 + Response 200 (application/json)
 
@@ -395,7 +397,12 @@ Retrieve an organisation's details. Response 401 if the requesting user doesn't 
 
 + Response 401
 
++ Response 404
+
++ Response 410
+
 ### Update an organisation [PUT]
+Update an organisation's details. Response 401 if the requesting user doesn't have a relationship with the organisation. Response 404 if the organisation doesn't exist. Response 410 if the organisation has been deactivated.
 
 + Request (application/json)
 
@@ -422,12 +429,10 @@ Retrieve an organisation's details. Response 401 if the requesting user doesn't 
 
 + Response 404
 
++ Response 410
+
 ### Delete an Organisation [DELETE]
-Flags an organisation as having been deactivated. Once deactivated it will not be returned by api calls.
-
-Response status 404 if the organisation is not found.
-
-Response status 401 if the user does not have access to delete the organisation.
+Flags an organisation as having been deactivated. Once deactivated it will not be returned by api calls. Response status 404 if the organisation is not found. Response status 401 if the user does not have access to delete the organisation. Response 410 if the organisation is already flagged as deactivated.
 
 + Response 204
 
@@ -435,11 +440,13 @@ Response status 401 if the user does not have access to delete the organisation.
 
 + Response 401
 
++ Response 410
+
 # Group Employee
 Employee related resources and actions. Note that strictly speaking these actions are a subset of organisation.
 
 ## Get employee list [/api/organisation/{organisationId}/employees]
-Retrieves a list of employees who work with the organisation. Response 401 if the requesting user doesn't have a relationship with the organisation.
+Retrieves a list of employees who work with the organisation. Response 401 if the requesting user doesn't have a relationship with the organisation. Response 404 if the organisation doesn't exist. Response 410 if the organisation has been deactivated.
 
 + Parameters
     + organisationId (int, `123`) ... the organisation to which the request relates
@@ -516,6 +523,10 @@ Retrieves a list of employees who work with the organisation. Response 401 if th
         
 + Response 401
 
++ Response 404
+
++ Response 410
+
 ## Create a new employee [/api/organisation/{organisationId}/employee]
 Individual employee related methods
 
@@ -537,7 +548,7 @@ Individual employee related methods
 
 ### Create an employee [POST]
 There is currently no validation on the values provided (other than ensuring required fields are present) so creating duplicate employees with the same details is possible although this may change in future.
-Response status 404 if the organisation is not found, or 401 if the requesting user cannot modify the organisation 
+Response status 404 if the organisation is not found. Response 401 if the requesting user cannot modify the organisation. Response 410 if the organisation has been deactivated.
 
 + Request (application/json)
 
@@ -601,7 +612,7 @@ Methods to update or retrieve an existing employee. For updates, required fields
     + employeeId (int, `123`) ... the employee to which the request relates
 
 ### Get an employee [GET]
-Retrieve an employee record. Throws a 404 if the organisation and/or employee not found. Response 401 if the requesting user doesn't have access to modify/edit the organisation (ie. the owner) or the user is not the employee him/herself.
+Retrieve an employee record. Throws a 404 if the organisation and/or employee not found. Response 401 if the requesting user doesn't have access to modify/edit the organisation (ie. the owner) or the user is not the employee him/herself. Response 410 if the ***organisation*** has been deactivated (liable to change).
 
 + Response 200 (application/json)
 
@@ -631,8 +642,10 @@ Retrieve an employee record. Throws a 404 if the organisation and/or employee no
 
 + Response 404
 
++ Response 410
+
 ### Update an employee [PUT]
-Update an employee record. Throws a 404 if the organisation and/or employee not found. Response 401 if requesting user doesn't have write access to the organisation (ie. non-owner)
+Update an employee record. Throws a 404 if the organisation and/or employee not found. Response 401 if requesting user doesn't have write access to the organisation (ie. non-owner). Response 410 if the ***organisation*** has been deactivated (liable to change).
 
 + Request (application/json)
 
@@ -657,6 +670,8 @@ Update an employee record. Throws a 404 if the organisation and/or employee not 
 
 + Response 404
 
++ Response 410
+
 ## Invite an existing employee [/api/organisation/{organisationId}/employee/{employeeId}/invite]
 Use this to invite a "stub" employee to join CITB and associate themselves with the organisation
 
@@ -665,7 +680,7 @@ Use this to invite a "stub" employee to join CITB and associate themselves with 
     + employeeId (int, `123`) ... the employee to which the request relates
 
 ### Invite an employee [POST]
-Send an e-mail to the employee to work with the organisation. Response status 404 if the organisation/employee not found, 403 if the employee is already a full (registered) user and 400 if the employee record doesn't have an e-mail address value.
+Send an e-mail to the employee to work with the organisation. Response status 404 if the organisation/employee not found, 403 if the employee is already a full (registered) user. Response 400 if the employee record doesn't have an e-mail address value. Response 410 if the ***organisation*** has been deactivated (liable to change).
 
 + Response 200
 
@@ -676,6 +691,8 @@ Send an e-mail to the employee to work with the organisation. Response status 40
 + Response 403
 
 + Response 404
+
++ Response 410
 
 ## Set an employee photo [/api/organisation/{organisationId/employee/{employeeId}/photo]
 Use this to upload a photo for a "stub" employee.
@@ -689,6 +706,7 @@ Response status 404 if the organisation or employee can not be found.
 Response status 403 if the employee has been registered.
 Response status 401 if the user does not have access to update the employee.
 Response status 400 if the media type is not valid.
+Response status 410 if the ***organisation*** has been deactivated (liable to change).
 
 + Request (image/jpeg or image/gif or image/png)
         
@@ -707,7 +725,8 @@ Response status 400 if the media type is not valid.
 + Response 403
  
 + Response 401
- 
+
++ Response 410
 
 # Group Document
 Document related resources and actions.
