@@ -889,3 +889,86 @@ Response status 401 if the user doesn't have access to the organisation. Respons
 + Response 404
 
 + Response 415
+
+# Group Job
+Job related resources and actions
+
+## Jobs List [/api/job/{organisationId}]
+Gets the list of Jobs
+
++ Parameters 
+    + organisationId (optional, int, `123`) ... id of organisation.
+
+### Jobs List [GET]
+Download a list of documents for an organisation. If the Organisation Id is not specified then documents are returned for the user.
+
+Response status 404 if the organisation is not found.
+Response status 401 if the user is not authorized to view that organisation.
+
++ Response 200
+
+        {[
+            {
+                "Records": [],
+                "Id": 14,
+                "OrganisationId": 393,
+                "JobName": "Integration Test Job",
+                "JobAddressLine1": "JobRoom 1, Floor A",
+                "JobAddressLine2": "JobACME Building",
+                "JobTown": "JobTownville",
+                "JobCounty": "JobCountyshire",
+                "JobPostcode": "AB21 9YZ",
+                "JobCountry": "UK",
+                "StartDate": "2014-04-10T00:00:00",
+                "EndDate": "2015-03-20T00:00:00",
+                "ClientName": "JobClientName",
+                "ClientAddressLine1": "Client Address Line 1",
+                "ClientAddressLine2": "Client Address Line 2",
+                "ClientTown": "Client Town",
+                "ClientCounty": "Client County",
+                "ClientPostcode": "AB22 9YX",
+                "ClientCountry": "UK",
+                "ClientContactNumber": "012345 679898",
+                "ClientEmail": "jobtestemail@jobtest.com",
+                "IsDeactivated": false,
+                "CreateDateTime": "2014-04-10T15:52:18.693",
+                "CreateUserId": "anonymous",
+                "LastUpdateDateTime": "2014-04-10T15:52:18.693",
+                "LastUpdateUserId": "anonymous"
+            },
+            {
+                "Records": [],
+                "Id": 15,
+                "OrganisationId": 393,
+                "JobName": "Integration Test Job",
+                "JobAddressLine1": "JobRoom 1, Floor A",
+                "JobAddressLine2": "JobACME Building",
+                "JobTown": "JobTownville",
+                "JobCounty": "JobCountyshire",
+                "JobPostcode": "AB21 9YZ",
+                "JobCountry": "UK",
+                "StartDate": "2014-04-10T00:00:00",
+                "EndDate": "2015-03-20T00:00:00",
+                "ClientName": "JobClientName",
+                "ClientAddressLine1": "Client Address Line 1",
+                "ClientAddressLine2": "Client Address Line 2",
+                "ClientTown": "Client Town",
+                "ClientCounty": "Client County",
+                "ClientPostcode": "AB22 9YX",
+                "ClientCountry": "UK",
+                "ClientContactNumber": "012345 679898",
+                "ClientEmail": "jobtestemail@jobtest.com",
+                "IsDeactivated": false,
+                "CreateDateTime": "2014-04-10T15:52:19.377",
+                "CreateUserId": "anonymous",
+                "LastUpdateDateTime": "2014-04-10T15:52:19.377",
+                "LastUpdateUserId": "anonymous"
+            }
+        ]}
+
++ Response 404
+
++ Response 401
+
+
+
