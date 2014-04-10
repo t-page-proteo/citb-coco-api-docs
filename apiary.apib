@@ -681,6 +681,19 @@ Update an employee record. Throws a 404 if the organisation and/or employee not 
 
 + Response 410
 
+### Delete an employee [DELETE]
+SPRINT 5 - NOT DEPLOYED YET! Flags an employee as having been deactivated. Once deactivated it will not be returned by any API calls.
+
+Response status 401 if the requesting user does not have write access to the organisation. Response 404 if the organisation and/or employee doesn't exist. Response 410 if the organisation and/or employee are already deactivated.
+
++ Response 204
+
++ Response 401
+
++ Response 404
+
++ Response 410
+
 ## Invite an existing employee [/api/organisation/{organisationId}/employee/{employeeId}/invite]
 Use this to invite a "stub" employee to join CITB and associate themselves with the organisation
 
@@ -891,7 +904,7 @@ Response status 401 if the user doesn't have access to the organisation. Respons
 + Response 415
 
 # Group Job
-Job related resources and actions
+SPRINT 5 - NOT DEPLOYED YET! Job related resources and actions
 
 ## Jobs List [/api/job/{organisationId}]
 Gets the list of Jobs
