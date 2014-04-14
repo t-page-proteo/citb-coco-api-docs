@@ -904,15 +904,16 @@ Response status 401 if the user doesn't have access to the organisation. Respons
 + Response 415
 
 # Group Job
+
 SPRINT 5 - NOT DEPLOYED YET! Job related resources and actions
 
-## Jobs List [/api/job/{organisationId}]
-Gets the list of Jobs
-
+## Jobs List [/api/job?organisationId={organisationId}]
 + Parameters 
     + organisationId (optional, int, `123`) ... id of organisation.
 
 ### Jobs List [GET]
+Gets the list of Jobs
+
 Download a list of documents for an organisation. If the Organisation Id is not specified then documents are returned for the user.
 
 Response status 404 if the organisation is not found.
@@ -922,7 +923,6 @@ Response status 401 if the user is not authorized to view that organisation.
 
         {[
             {
-                "Records": [],
                 "Id": 14,
                 "OrganisationId": 393,
                 "JobName": "Integration Test Job",
@@ -950,7 +950,6 @@ Response status 401 if the user is not authorized to view that organisation.
                 "LastUpdateUserId": "anonymous"
             },
             {
-                "Records": [],
                 "Id": 15,
                 "OrganisationId": 393,
                 "JobName": "Integration Test Job",
@@ -975,7 +974,8 @@ Response status 401 if the user is not authorized to view that organisation.
                 "CreateDateTime": "2014-04-10T15:52:19.377",
                 "CreateUserId": "anonymous",
                 "LastUpdateDateTime": "2014-04-10T15:52:19.377",
-                "LastUpdateUserId": "anonymous"
+                "LastUpdateUserId": "anonymous",
+                "OrganisationName": "Test Org",
             }
         ]}
 
@@ -983,7 +983,10 @@ Response status 401 if the user is not authorized to view that organisation.
 
 + Response 401
 
-
+## Job [/api/job/{id}]
++ Parameters 
+    + id (required, int, `123`) ... id of the job.
+    
 ### Delete a job [DELETE]
 Flags a job as having been deactivated. Once deactivated it will not be returned by api calls.
 
