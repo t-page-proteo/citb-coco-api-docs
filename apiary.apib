@@ -329,7 +329,7 @@ Retrieves a list of organisations. Currently this reflects all of the organisati
 
 + Response 200 (application/json)
 
-        [
+        {[
             {
                 "Id": 1,
                 "Name": "ACME Builders PLC",
@@ -375,7 +375,26 @@ Retrieves a list of organisations. Currently this reflects all of the organisati
                 "CanEdit": false,
                 "IsOwner": false
             }
-        ]
+        ]}
+
+
+## Get organisation index [/api/organisation/index]
+Get list of containing just the organisation name and id that the user is an employee of.
+
+### Get Organisation Index [GET]
+
++ Response 200 (application/json)
+        
+        {[
+              {
+                "Id": 736,
+                "Name": "Organisation A"
+              },
+              {
+                "Id": 735,
+                "Name": "Organisation B"
+              }
+        ]}
 
 ## Organisation get/update [/api/organisation/{organisationId}]
 Commands related to a single existing organisation. For updates, required fields/lengths match those defined for the create organisation method (see above).
