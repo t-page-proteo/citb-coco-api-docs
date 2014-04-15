@@ -1086,3 +1086,48 @@ Attaches a new record (media item) to the specified job. Response 401 if the req
 + Response 404
 
 + Response 410
+
+## Record methods [/api/record/{recordId}]
++ Parameters 
+    + recordId (required, int, `123`) ... id of target record.
+    
+### Retrieve metadata for a record [GET]
+Retrieve metadata for a single record. Response 401 if the requesting user is not an employee of the parent jobs parent organisation, 404 if the record does not exist, 410 if the parent job or parent organisation have been deactivated.
+
++ Response 200
+
+        {
+            "Id": 123,
+            "Type": 2,
+            "TypeName": "Image",
+            "Name": "New Image",
+            "Size": 0.073739051818847656,
+            "ThumbnailUrl": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
+            "CreateDateTime": "2014-04-15T16:59:32.5388886+01:00",
+            "Url": "https://localhost/api/record/123/content"
+        }
+
++ Response 401
+
++ Response 404
+
++ Response 410
+
+### Update a record [PUT]
+Update a record. Currently this only supports updating the record name. Response 401 if the requesting user is not an employee of the parent jobs parent organisation, 404 if the record does not exist, 410 if the parent job or parent organisation have been deactivated.
+
++ **Name (string)**
+
++ Request (application/json)
+
+        {
+            "Name": "Super amazing DIY guide",
+        }
+
++ Response 204
+
++ Response 401
+
++ Response 404
+
++ Response 410
