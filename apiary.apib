@@ -1146,3 +1146,22 @@ Deactivate a record. Response 401 if the requesting user is not the owner of the
 + Response 404
 
 + Response 410
+
+## Download Record [/api/record/{recordId}/content]
+Download a document
+
++ Parameters
+    + recordId (int, `123`) ... Record Id
+    
+### Download [GET]
+Response status 401 if the user doesn't have access to the record. Response status 404 if the record is not found. Response status 410 if the record has been deleted/deactivated.
+
++ Response 200
+
+        "<body contains record binary content>"
+
++ Response 401
+
++ Response 404
+
++ Response 410
