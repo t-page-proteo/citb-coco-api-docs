@@ -1066,7 +1066,11 @@ Retrieves the list of records that exist under the specified job. Response 401 i
 
 ### Attach new record to job [POST]
 Please note that the "Url" value returned will be a secure Url and therefore the record can only be downloaded via this url if requested with an "Authorization: Bearer -token-" header.
-Attaches a new record (media item) to the specified job. Response 401 if the requesting user is not an employee of the job's parent organisation, 404 if the job does not exist, 410 if the job or parent organisation have been deactivated. Response 415 if the supplied file is not one of the supported types; exact list of supported types still to be defined at this time.
+Attaches a new record (media item) to the specified job. Response 401 if the requesting user is not an employee of the job's parent organisation, 404 if the job does not exist, 410 if the job or parent organisation have been deactivated. Response 415 if the supplied file is not one of the supported types. **The list of supported types is still to be defined at this time and is liable to change**.
+
++ Request (video/mp4 OR video/mpeg OR video/quicktime OR video/x-msvideo OR audio/wav OR audio/mpeg OR image/jpeg OR image/gif OR image/png)
+ 
+        <body contains record binary content>
 
 + Response 200
 
