@@ -1092,7 +1092,7 @@ Attaches a new record (media item) to the specified job. Response 401 if the req
     + recordId (required, int, `123`) ... id of target record.
     
 ### Retrieve metadata for a record [GET]
-Retrieve metadata for a single record. Response 401 if the requesting user is not an employee of the parent jobs parent organisation, 404 if the record does not exist, 410 if the parent job or parent organisation have been deactivated.
+Retrieve metadata for a single record. Response 401 if the requesting user is not an employee of the parent jobs parent organisation, 404 if the record does not exist, 410 if the record, parent job or parent organisation have been deactivated.
 
 + Response 200
 
@@ -1114,7 +1114,7 @@ Retrieve metadata for a single record. Response 401 if the requesting user is no
 + Response 410
 
 ### Update a record [PUT]
-Update a record. Currently this only supports updating the record name. Response 401 if the requesting user is not an employee of the parent jobs parent organisation, 404 if the record does not exist, 410 if the parent job or parent organisation have been deactivated.
+Update a record. Currently this only supports updating the record name. Response 401 if the requesting user is not an employee of the parent jobs parent organisation, 404 if the record does not exist, 410 if the record, parent job or parent organisation have been deactivated.
 
 + **Name (string)**
 
@@ -1123,6 +1123,17 @@ Update a record. Currently this only supports updating the record name. Response
         {
             "Name": "Super amazing DIY guide",
         }
+
++ Response 204
+
++ Response 401
+
++ Response 404
+
++ Response 410
+
+### Delete a record [DELETE]
+Deactivate a record. Response 401 if the requesting user is not the owner of the parent jobs parent organisation, 404 if the record does not exist, 410 if the record, parent job or parent organisation have been deactivated.
 
 + Response 204
 
