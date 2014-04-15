@@ -1022,4 +1022,67 @@ Response status 401 if the user does not have access to delete the job.
 
 + Response 401
 
+# Group Record
 
+SPRINT 5 - NOT DEPLOYED YET! Record related resources and actions
+
+## Job records [/api/record?jobId={jobId}]
++ Parameters 
+    + jobId (required, int, `123`) ... id of job to retrieve records for.
+
+### Retrieve record List [GET]
+Retrieves the list of records that exist under the specified job. Response 401 if the requesting user is not an employee of the job's parent organisation, 404 if the job does not exist, 410 if the job or parent organisation have been deactivated.
+
++ Response 200
+
+        [
+            {
+                "Id": 123,
+                "Type": 1,
+                "TypeName": "Audio",
+                "Name": "Onsite Audio Recording",
+                "Size": 0.073739051818847656,
+                "ThumbnailUrl": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
+                "CreateDateTime": "2014-04-15T16:52:21.117",
+                "Url": "https://localhost/api/record/123/content"
+            },
+            {
+                "Id": 124,
+                "Type": 3,
+                "TypeName": "Video",
+                "Name": "Video of accident site",
+                "Size": 0.073739051818847656,
+                "ThumbnailUrl": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
+                "CreateDateTime": "2014-04-15T16:52:21.083",
+                "Url": "https://localhost/api/record/124/content"
+            }
+        ]
+
++ Response 401
+
++ Response 404
+
++ Response 410
+
+### Attach new record to job [POST]
+Please note that the "Url" value returned will be a secure Url and therefore the record can only be downloaded via this url if requested with an "Authorization: Bearer -token-" header.
+Attaches a new record (media item) to the specified job. Response 401 if the requesting user is not an employee of the job's parent organisation, 404 if the job does not exist, 410 if the job or parent organisation have been deactivated. Response 415 if the supplied file is not one of the supported types; exact list of supported types still to be defined at this time.
+
++ Response 200
+
+        {
+            "Id": 123,
+            "Type": 2,
+            "TypeName": "Image",
+            "Name": "New Image",
+            "Size": 0.073739051818847656,
+            "ThumbnailUrl": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
+            "CreateDateTime": "2014-04-15T16:59:32.5388886+01:00",
+            "Url": "https://localhost/api/record/123/content"
+        }
+
++ Response 401
+
++ Response 404
+
++ Response 410
