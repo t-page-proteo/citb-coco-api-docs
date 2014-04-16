@@ -1012,9 +1012,10 @@ When requested for a specific organisation, response 401 indicates user is not a
 + ClientContactNumber (string, 20 characters)
 + ClientEmail (string)
 
+Create a new job for an organisation. Response status 401 if user doesn't have access to the organisation, 404 if organisation cannot be found, and 410 if the organisation has been deactivated.
+
 + Parameters 
     + organisationId (required, int, `123`) ... id of organisation.
-Create a new job for an organisation. Response status 401 if user doesn't have access to the organisation, 404 if organisation cannot be found, and 410 if the organisation has been deactivated.
 
 + Request (application/json)
 
