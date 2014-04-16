@@ -1068,6 +1068,16 @@ Create a new job for an organisation. Response status 401 if user doesn't have a
             "OrganisationLogoUrl": "http://localhost/Images/default-company-logo.png"
         }
 
++ Response 400
+
+        {
+            "Message": "The request is invalid.",
+            "ModelState":
+            {
+                "bindingModel.JobName": [ "The Job name field is required." ]
+            }
+        }
+
 + Response 401
 
 + Response 404
@@ -1161,6 +1171,16 @@ Updates details for a single job. Response status 404 if the job cannot be found
         }
 
 + Response 204
+
++ Response 400
+
+        {
+            "Message": "The request is invalid.",
+            "ModelState":
+            {
+                "bindingModel.JobName": [ "The Job name field is required." ]
+            }
+        }
 
 + Response 401
 
@@ -1286,6 +1306,16 @@ Update a record. Currently this only supports updating the record name. Response
         }
 
 + Response 204
+
++ Response 400
+
+        {
+            "Message": "The request is invalid.",
+            "ModelState": 
+            {
+                "model.Name": [ "The Name field is required." ]
+            }
+        }
 
 + Response 401
 
