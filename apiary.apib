@@ -231,8 +231,6 @@ Set the user's details. Response 404 if the user does not exist.
 
 + Response 404
 
-
-
 # Group Organisation
 Organisation related resources
 
@@ -321,7 +319,6 @@ Currently no validation of image size (bytes or height/width) is implemented - t
 
         {"Message": "The request entity's media type 'image/random' is not supported for this resource."}
 
-
 ## Get organisation list [/api/organisation/getall]
 Retrieves a list of organisations. Currently this reflects all of the organisations created by the user, although this is liable to change in the near future.
 
@@ -376,7 +373,6 @@ Retrieves a list of organisations. Currently this reflects all of the organisati
                 "IsOwner": false
             }
         ]}
-
 
 ## Get organisation index [/api/organisation/index]
 Get list of containing just the organisation name and id that the user is an employee of.
@@ -929,10 +925,11 @@ SPRINT 5 - NOT DEPLOYED YET! Job related resources and actions
 ## Jobs List/Create [/api/job?organisationId={organisationId}]
 
 ### Jobs List [GET]
-+ Parameters 
-    + organisationId (optional, int, `123`) ... id of organisation.
 Gets the list of Jobs; when organisation id is supplied, list of jobs will be restricted to that organisation, else all jobs for all organisations user is an employee of will be returned.
 When requested for a specific organisation, response 401 indicates user is not authorized to view that organisation, 404 if the organisation cannot be found, 410 if the organisation has been deactivated. When no organisation specified, response will always be 200.
+
++ Parameters 
+    + organisationId (optional, int, `123`) ... id of organisation.
 
 + Response 200
 
@@ -1076,9 +1073,9 @@ Create a new job for an organisation. Response status 401 if user doesn't have a
 
 + Response 410
 
-## Job [/api/job/{id}]
+## Job [/api/job/{jobId}]
 + Parameters 
-    + id (required, int, `123`) ... id of the job.
+    + jobId (required, int, `123`) ... id of the job.
 
 ### Retrieve a job [GET]
 Retrieves details for a single job. Response status 404 if the job cannot be found, 410 if the job has been deactivated, and 401 if the user doesn't have access to the organisation or the organisation has been deactivated.
