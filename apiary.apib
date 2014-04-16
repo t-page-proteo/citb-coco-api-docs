@@ -697,7 +697,7 @@ Update an employee record. Throws a 404 if the organisation and/or employee not 
 + Response 410
 
 ### Delete an employee [DELETE]
-SPRINT 5 - NOT DEPLOYED YET! Flags an employee as having been deactivated. Once deactivated it will not be returned by any API calls.
+Flags an employee as having been deactivated. Once deactivated it will not be returned by any API calls.
 
 Response status 401 if the requesting user does not have write access to the organisation. Response 404 if the organisation and/or employee doesn't exist. Response 410 if the organisation and/or employee are already deactivated.
 
@@ -920,7 +920,7 @@ Response status 401 if the user doesn't have access to the organisation. Respons
 
 # Group Job
 
-SPRINT 5 - NOT DEPLOYED YET! Job related resources and actions
+Job related resources and actions
 
 ## Jobs List/Create [/api/job?organisationId={organisationId}]
 
@@ -1180,7 +1180,7 @@ Note that as of wrting, only organisation owenrs have the rights to delete a job
 + Response 410
 
 # Group Record
-SPRINT 5 - NOT DEPLOYED YET! Record related resources and actions
+Record related resources and actions
 
 ## Job records [/api/record?jobId={jobId}]
 + Parameters 
