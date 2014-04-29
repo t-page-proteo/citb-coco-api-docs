@@ -1355,7 +1355,19 @@ Response 410 if either the job or parent organisation have been deactivated.
                 "Size": 12345,
                 "ThumbnailUrl": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
                 "CreateDateTime": "2014-04-15T16:52:21.117",
-                "Url": "https://localhost/api/record/123/content"
+                "Status": "Processing"
+                "Url": null
+            },
+            {
+                "Id": 124,
+                "Type": 3,
+                "TypeName": "Image",
+                "Name": "Image of accident site",
+                "Size": 12345,
+                "ThumbnailUrl": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
+                "CreateDateTime": "2014-04-15T16:52:21.083",
+                "Status": "Complete"
+                "Url": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg"
             },
             {
                 "Id": 124,
@@ -1365,7 +1377,8 @@ Response 410 if either the job or parent organisation have been deactivated.
                 "Size": 12345,
                 "ThumbnailUrl": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
                 "CreateDateTime": "2014-04-15T16:52:21.083",
-                "Url": "https://localhost/api/record/124/content"
+                "Status": "Error"
+                "Url": null
             }
         ]
 
@@ -1401,7 +1414,8 @@ Response 415 if the supplied file is not one of the supported types. **The list 
             "Size": 12345,
             "ThumbnailUrl": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
             "CreateDateTime": "2014-04-15T16:59:32.5388886+01:00",
-            "Url": "https://localhost/api/record/123/content"
+            "Status": "Complete"
+            "Url": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg"
         }
 
 + Response 403
@@ -1433,7 +1447,8 @@ Response 410 if either the record, parent job or parent organisation have been d
             "Size": 12345,
             "ThumbnailUrl": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
             "CreateDateTime": "2014-04-15T16:59:32.5388886+01:00",
-            "Url": "https://localhost/api/record/123/content"
+            "Status": "Complete"
+            "Url": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg"
         }
 
 + Response 403
