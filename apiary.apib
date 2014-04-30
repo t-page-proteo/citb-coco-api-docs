@@ -1393,8 +1393,7 @@ Response 410 if either the job or parent organisation have been deactivated.
 + Response 410
 
 ### Attach new record to job [POST]
-Please note that the "Url" value returned will be a secure Url and therefore the record can only be downloaded via this url if requested with an "Authorization: Bearer -token-" header.
-Attaches a new record (media item) to the specified job. 
+Attaches a new record (media item) to the specified job. Note that the Status and Url fields in the response will adhere to the rules defined under the group heading above.
 
 Response 403 if the requesting user is not an employee of the job's parent organisation.
 
@@ -1402,9 +1401,9 @@ Response 404 if the job does not exist.
 
 Response 410 if the job or parent organisation have been deactivated.
 
-Response 415 if the supplied file is not one of the supported types. **The list of supported types is still to be defined at this time and is liable to change**.
+Response 415 if the supplied file is not one of the supported types.
 
-+ Request (video/mp4 OR video/mpeg OR video/quicktime OR video/x-msvideo OR audio/wav OR audio/mpeg OR image/jpeg OR image/gif OR image/png)
++ Request (video/mp4 OR video/mpeg OR video/quicktime OR video/x-msvideo OR video/ogg OR video/3gpp OR audio/wav OR audio/mpeg OR audio/mp3 OR audio/ogg OR image/jpeg OR image/gif OR image/png)
  
         <body contains record binary content>
 
@@ -1418,8 +1417,8 @@ Response 415 if the supplied file is not one of the supported types. **The list 
             "Size": 12345,
             "ThumbnailUrl": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
             "CreateDateTime": "2014-04-15T16:59:32.5388886+01:00",
-            "Status": "Complete"
-            "Url": "http://localhost/thumbnails/ae9841-c921-49ea-a53c-02eae247ad3a.jpg"
+            "Status": "Processing"
+            "Url": null
         }
 
 + Response 403
