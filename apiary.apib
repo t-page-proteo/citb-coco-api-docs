@@ -1333,7 +1333,7 @@ Record related resources and actions.
 
 All record responses include a **Status** field that will have one of the following three values: **Processing**, **Complete**, **Error**. These statuses reflect the transcoding pipeline status. If a record has a status of  **Error** then transcoding of the file has failed and the user will not be able to retrieve it again; no detailed error messages are available at this time.
 
-The **Url** field for a record will only be populated once the record status (described above) moves to **Complete**, and will hold a value of 'null' otherwise. The **Url** value points to an API endpoint which can subsequently be used to generate and return a timeboxed URL for the file download. Details of this method will be added in the near future.
+The **Url** field for a record will only be populated once the record status (described above) moves to **Complete**, and will hold a value of 'null' otherwise. The **Url** value points to an API endpoint which can subsequently be used to generate and return a timeboxed URL for the file download.
 
 ## Job records [/api/record?jobId={jobId}]
 + Parameters 
