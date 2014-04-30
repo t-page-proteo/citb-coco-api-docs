@@ -1329,7 +1329,11 @@ Response 410 if the job has already been deactivated.
 + Response 410
 
 # Group Record
-Record related resources and actions
+Record related resources and actions.
+
+All record responses include a **Status** field that will have one of the following three values: **Processing**, **Complete**, **Error**. These statuses reflect the transcoding pipeline status. If a record has a status of  **Error** then transcoding of the file has failed and the user will not be able to retrieve it again; no detailed error messages are available at this time.
+
+The **Url** field for a record will only be populated once the record status (described above) moves to **Complete**, and will hold a value of 'null' otherwise. The **Url** value points to an API endpoint which can subsequently be used to generate and return a timeboxed URL for the file download. Details of this method will be added in the near future.
 
 ## Job records [/api/record?jobId={jobId}]
 + Parameters 
@@ -1509,8 +1513,8 @@ Response 410 if either the record, parent job or parent organisation have been d
 
 + Response 410
 
-## Download Record [/api/record/{recordId}/content]
-Download a record
+## Download Record [/api/record/{recordId}/Download]
+Hitting this endpoint will generate a timeboxed URL for the user to download the specified record (transcoded) file.
 
 + Parameters
     + recordId (int, `123`) ... Record Id
@@ -1524,7 +1528,9 @@ Response 410 if the record has been deleted/deactivated.
 
 + Response 200
 
-        "<body contains record binary content>"
+        {
+            "Url": "http://some/timeboxed/url/ae9841-c921-49ea-a53c-02eae247ad3a.mp4" 
+        }
 
 + Response 403
 
