@@ -1570,3 +1570,38 @@ Retrieves a list of available specialisms and their Ids
                 "Name": "Roofing"
             }
         ]
+
+## Lists [/api/glossay/lists]
+Retrieves a list of lists. Currently labels and specialisms
+
+### Lists [GET]
+
++ Response 200
+
+        [
+          "SpecialismList": [
+            {
+              "Id": 22,
+              "Name": "Bricklaying"
+            },
+            {
+              "Id": 24,
+              "Name": "General Builder"
+            },
+            {
+              "Id": 23,
+              "Name": "Plumbing"
+            }
+          ],
+          "LabelsList": [
+            {
+              "Name": "Label 1"
+            },
+            {
+              "Name": "Label 2"
+            },
+            {
+              "Name": "label 3"
+            }
+          ]
+        ]
