@@ -985,7 +985,7 @@ Response 410 if the ***organisation*** has been deactivated (liable to change).
 # Group Document
 Document related resources and actions.
 
-## Document Types [/api/document/documenttypes]
+## Document Types API V1 Only [/api/document/documenttypes]
 Document type related methods
 
 ### Get document type list [GET]
@@ -1011,14 +1011,13 @@ Retrieves the list of available document types
 ## Document [/api/document/{id}]
 Single document related methods
 
-+ **DocumentType (int)**
 + Description (string)
 + OriginalFilename (string)
 
 + Parameters
     + id (int, `123`) ... Document Id
     
-### Set document details [PUT]
+### Set document details - Implementation for V2 and later [PUT]
 Response 403 if the user doesn't have access to the document. 
 
 Response 404 if the document is not found. 
@@ -1028,7 +1027,6 @@ Response 410 if the document has been deleted/deactivated.
 + Request (application/json)
 
         {
-            "DocumentType": 1,
             "Description": "My risk assessment",
             "OriginalFilename": "My Risk Assessment.docx"
         }
@@ -1084,7 +1082,7 @@ Documents belonging to an organisation
 + Parameters
     + id (int, `123`) ... Organisation Id
 
-### Get document list [GET]
+### Get document list - Implementation for V2 and later [GET]
 Retrieves a list of documents for the given organisation. Please note that the "Url" value returned is a secure Url and therefore the document can only be downloaded via this url if requested with an "Authorization: Bearer -token-" header.
 
 Response 403 if user doesn't have a relationship with the organisation.
@@ -1099,7 +1097,6 @@ Response 410 if the organisation has been deleted.
             {
                 "OrganisationId": 123,
                 "Id": 1,
-                "DocumentType": 1,
                 "DocumentTypeName": "Risk assessment",
                 "Url": "https://citbconstructioncompanion.com:8443/api/document/1/content",
                 "Description": "My risk assessment",
@@ -1111,7 +1108,6 @@ Response 410 if the organisation has been deleted.
             {
                 "OrganisationId": 123,
                 "Id": 2,
-                "DocumentType": 2,
                 "DocumentTypeName": "Policy",
                 "Url": "https://citbconstructioncompanion.com:8443/api/document/2/content",
                 "Description": "My safety policy",
