@@ -502,6 +502,43 @@ Response 410 if the organisation is already flagged as deactivated.
 
 + Response 410
 
+## Organisation Label Creation [/api/organisation/{organisationId}/Label]
+Create a new organisation label. At present, this method can only be utilised by the organisation owner.
+
++ Parameters
+    + organisationId (int, `123`) ... organisation to create label for.
+
+### Create a label [POST]
+
++ **Name (string)**
+
+Creates a new organisation label. Label names will be checked for uniqueness (case-insensitive) and in the event an active label already exists with the requested text, the existing label will be returned instead.
+
+Response 403 if the user doesn't have permission to perform label management (ie. isn't the org ownwer).
+
+Response 404 if the organisation is not found.
+
+Response 410 if the organisation has been deactivated.
+
++ Request (application/json)
+
+        {
+            "Name": "Health and Safety"
+        }
+
++ Response 200
+
+        {
+            "Id": 123,
+            "Name": "Health and Safety"
+        }
+
++ Response 403
+
++ Response 404
+
++ Response 410
+
 # Group Employee
 Employee related resources and actions. Note that strictly speaking these actions are a subset of organisation.
 
