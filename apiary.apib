@@ -502,7 +502,47 @@ Response 410 if the organisation is already flagged as deactivated.
 
 + Response 410
 
-## Organisation Label Creation [/api/organisation/{organisationId}/Label]
+## Organisation label list [/api/organisation/{organisationId}/Labels]
+Lists the organisation labels that are available for use for the given organisation.
+
++ Parameters
+    + organisationId (int, `123`) ... organisation this request relates to.
+
+### Retrieve label list [GET]
+Response 403 if the user is not an active employee of the organisation. 
+
+Response 404 if the organisation is not found. 
+
+Response 410 if the organisation is already flagged as deactivated.
+
++ Response 200
+
+        [
+            {
+                "Id": 123,
+                "Name": "Bricklaying"
+            },
+            {
+                "Id": 124,
+                "Name": "Glazing"
+            },
+            {
+                "Id": 125,
+                "Name": "Plumbing"
+            },
+            {
+                "Id": 126,
+                "Name": "Landscaping"
+            }
+        ]
+
++ Response 403
+
++ Response 404
+
++ Response 410
+
+## Organisation label - Create [/api/organisation/{organisationId}/Label]
 Create a new organisation label. At present, this method can only be utilised by the organisation owner.
 
 + Parameters
@@ -550,7 +590,7 @@ Response 410 if the organisation has been deactivated.
 
 + Response 410
 
-## Organisation Label Management [/api/organisation/{organisationId}/Label/{labelId}]
+## Organisation label - Update/Delete [/api/organisation/{organisationId}/Label/{labelId}]
 Manage organisation labels. At present, these method can only be utilised by the organisation owner.
 
 + Parameters
