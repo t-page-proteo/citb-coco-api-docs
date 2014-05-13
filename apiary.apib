@@ -514,6 +514,8 @@ Create a new organisation label. At present, this method can only be utilised by
 
 Creates a new organisation label. Label names will be checked for uniqueness (case-insensitive) and in the event an active label already exists with the requested text, the existing label will be returned instead.
 
+Response 400 if the request is invalid.
+
 Response 403 if the user doesn't have permission to perform label management (ie. isn't the org ownwer).
 
 Response 404 if the organisation is not found.
@@ -532,6 +534,73 @@ Response 410 if the organisation has been deactivated.
             "Id": 123,
             "Name": "Health and Safety"
         }
+
++ Response 400
+
+        {
+            "Message":"The request is invalid.",
+            "ModelState":{
+                "model.Name":["The Label name field is required."]
+            }
+        }
+
++ Response 403
+
++ Response 404
+
++ Response 410
+
+## Organisation Label Management [/api/organisation/{organisationId}/Label/{labelId}]
+Manage organisation labels. At present, these method can only be utilised by the organisation owner.
+
++ Parameters
+    + organisationId (int, `123`) ... owner organisation of target label.    
+    + labelId (int, `123`) ... label this request relates to.
+    
+### Update a label [PUT]
+Updates an organisation label; this should cascade down into any objects which already use that label.
+
+Response 400 if the request is invalid.
+
+Response 403 if the user doesn't have permission to perform label management (ie. isn't the org ownwer).
+
+Response 404 if the organisation or target label is not found.
+
+Response 410 if the organisation or target label has been deactivated.
+
++ Request (application/json)
+
+        {
+            "Name": "Health and Safety"
+        }
+
++ Response 204
+
++ Response 400
+
+        {
+            "Message":"The request is invalid.",
+            "ModelState":{
+                "model.Name":["The Label name field is required."]
+            }
+        }
+
++ Response 403
+
++ Response 404
+
++ Response 410
+
+### Delete a label [DELETE]
+Delete an organisation label; this should cascade down into any objects which already use that label.
+
+Response 403 if the user doesn't have permission to perform label management (ie. isn't the org ownwer).
+
+Response 404 if the organisation or target label is not found.
+
+Response 410 if the organisation or target label has been deactivated.
+
++ Response 204
 
 + Response 403
 
