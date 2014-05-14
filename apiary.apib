@@ -966,7 +966,7 @@ Response 410 if the ***organisation*** has been deactivated (liable to change).
 
 + Request (image/jpeg or image/gif or image/png)
         
-        <body contains iamge binary content>
+        <body contains image binary content>
 
 + Response 200
 
@@ -985,31 +985,8 @@ Response 410 if the ***organisation*** has been deactivated (liable to change).
 # Group Document
 Document related resources and actions.
 
-## Document Types API V1 Only [/api/document/documenttypes]
-Document type related methods
-
-### Get document type list [GET]
-Retrieves the list of available document types
-
-+ Response 200
-
-        [
-            {
-                "Id": 1,
-                "Name": "Risk assessment"
-            },
-            {
-                "Id": 2,
-                "Name": "Policy"
-            },
-            {
-                "Id": 3,
-                "Name": "Method statement"
-            },
-        ]
-
 ## Document [/api/document/{id}]
-Single document related methods
+Single organisation document related methods
 
 + Description (string)
 + OriginalFilename (string)
@@ -1017,6 +994,38 @@ Single document related methods
 + Parameters
     + id (int, `123`) ... Document Id
     
+### Get organisation document details - Implementation for V2 and later [GET]
+Response 403 if the user doesn't have access to the document. 
+
+Response 404 if the document is not found. 
+
+Response 410 if the document has been deleted/deactivated.
+
++ Request (application/json)
+
++ Response 200
+
+        {
+            "Id": 497,
+            "OrganisationId": 3058,
+            "Url": "https://api.citbconstructioncompanion.com/api/document/497/content",
+            "Description": "My risk assessment",
+            "OriginalFilename": "My Risk Assessment.docx",
+            "Labels": [
+                { "Id": 91, "Name": "TestLabel1" },
+                { "Id": 92, "Name": "TestLabel2" }
+            ],
+            "CanEdit": true,
+            "CreateDateTime": "2014-05-14T16:15:44.647"
+        }
+
++ Response 403
+
++ Response 404
+
++ Response 410
+        
+
 ### Set document details - Implementation for V2 and later [PUT]
 Response 403 if the user doesn't have access to the document. 
 
@@ -1099,23 +1108,19 @@ Response 410 if the organisation has been deleted.
             {
                 "OrganisationId": 123,
                 "Id": 1,
-                "DocumentTypeName": "Risk assessment",
                 "Url": "https://citbconstructioncompanion.com:8443/api/document/1/content",
                 "Description": "My risk assessment",
                 "OriginalFilename": "My Risk Assessment.docx",
                 "CreateDateTime": "2014-03-07T12:04:17.403",
-                "IsDeactivated", false,
                 "CanEdit": true
             },
             {
                 "OrganisationId": 123,
                 "Id": 2,
-                "DocumentTypeName": "Policy",
                 "Url": "https://citbconstructioncompanion.com:8443/api/document/2/content",
                 "Description": "My safety policy",
                 "OriginalFilename": "My Safety Policy.pdf",
                 "CreateDateTime": "2014-03-07T12:04:17.403"
-                "IsDeactivated", false,
                 "CanEdit": true
             }
         ]
