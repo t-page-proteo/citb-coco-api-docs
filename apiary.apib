@@ -285,29 +285,29 @@ There is currently no validation on the values provided (other than ensuring req
 + Response 200
 
         {
-            "Id": 123,
-            "Name": "ACME Builders PLC",
-            "AddressLine1": "ACME Building",
-            "AddressLine2": "123 High Street",
-            "Town": "Townville",
-            "County": "Countryshire",
-            "Postcode": "AB12 9YZ",
-            "Country": "Countryland",
-            "ContactTel": "01234 567 890",
-            "ContactMobile": "07123 456 789"
-            "LogoUrl": "https://citbconstructioncompanion.com:8443/Images/default-company-logo.png",
-            "CanEdit": true,
-            "IsOwner": true,
-            "Labels": [
-                {
+            "Organisation": {
+                "Id": 123,
+                "Name": "ACME Builders PLC",
+                "AddressLine1": "ACME Building",
+                "AddressLine2": "123 High Street",
+                "Town": "Townville",
+                "County": "Countryshire",
+                "Postcode": "AB12 9YZ",
+                "Country": "Countryland",
+                "ContactTel": "01234 567 890",
+                "ContactMobile": "07123 456 789"
+                "LogoUrl": "https://citbconstructioncompanion.com:8443/Images/default-company-logo.png",
+                "CanEdit": true,
+                "IsOwner": true,
+                "Labels": [{
                     "Id": 456,
                     "Name": "Water"
-                },
-                {
+                }, {
                     "Id": 654,
                     "Name": "Electricity"
-                }
-            ]
+                }]
+            },
+            "DocumentCount": 1
         }
 
 ## Organisation logo [/api/organisation/{organisationId}/logo]
