@@ -1216,6 +1216,87 @@ Response 415 if the file extension is not an allowed type; the file extension is
 
 + Response 415
 
+## Job Document [/api/document/job/{id}]
+
+** SPRINT 7 NOT DEPLOYED TO DEV AT THIS TIME **
+
+Documents belonging to a job. Note that these requests/responses will return the "DocumentId" that can be used by the generic document methods above.
+
+### Get document list [GET]
+Retrieves a list of documents for the given job. Please note that the "Url" value returned is a secure Url and therefore the document can only be downloaded via this url if requested with an "Authorization: Bearer -token-" header.
+
+Response 403 if user doesn't have a relationship with the job's owner organisation (ie. a non-employee).
+
+Response 404 if the job cannot be found.
+
+Response 410 if the job has been deleted.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Id": 1,
+                "JobId": 321,
+                "Url": "https://citbconstructioncompanion.com:8443/api/document/1/content",
+                "Description": "Risk assessment",
+                "OriginalFilename": "My Risk Assessment.docx",
+                "CreateDateTime": "2014-05-25T12:04:17.403",
+                "CanEdit": true,
+                "Labels": [
+                    { "Id": 1, "Name": "Bricks" },
+                    { "Id": 2, "Name": "Mortar" }
+                ]
+            },
+            {
+                "Id": 2,
+                "JobId": 321,
+                "Url": "https://citbconstructioncompanion.com:8443/api/document/2/content",
+                "Description": "Safety policy",
+                "OriginalFilename": "My Safety Policy.pdf",
+                "CreateDateTime": "2014-05-25T12:04:17.403",
+                "CanEdit": true,
+                "Labels": [
+                    { "Id": 2, "Name": "Mortar" },
+                    { "Id": 3, "Name": "Plumbline" }
+                ]
+            }
+        ]
+        
++ Response 403
+
++ Response 404
+
++ Response 410
+
+### Upload a document [POST]
+Uploads a document and attaches it to BOTH the target job and the job's parent Organisation. Please note that the "Url" value returned is a secure Url and therefore the document can only be downloaded via this url if requested with an "Authorization: Bearer -token-" header.
+
+Response 403 if the user doesn't have access to the job. 
+
+Response 404 if the job is not found.
+
+Response 415 if the file extension is not an allowed type; the file extension is checked against list of allowed extensions - currently restricted to *.pdf, *.doc and *.docx
+
++ Request (application/pdf or application/msword or application/vnd.openxmlformats-officedocument.wordprocessingml.document)
+ 
+        <body contains document binary content>
+
++ Response 200
+
+        {
+            "Id": 321,
+            "JobId": 123,
+            "Url": "https://citbconstructioncompanion.com:8443/api/document/321/content",
+            "CreateDateTime": "2014-05-23T12:04:17.403"
+        }
+        
++ Response 403
+
++ Response 404
+
++ Response 415
+
+
 # Group Job
 
 Job related resources and actions
