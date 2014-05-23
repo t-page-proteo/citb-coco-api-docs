@@ -1220,6 +1220,8 @@ Response 415 if the file extension is not an allowed type; the file extension is
 
 Job related resources and actions
 
+**SPRINT 7 - PLEASE NOTE THAT ALL REFERENCES TO JOB LABELS ARE FOR SPRINT 7+ AND NOT RUNNING ON DEV AT TIME OF WRITING (23/05/2014)**
+
 ## Jobs List/Create [/api/job?organisationId={organisationId}]
 
 ### Jobs List [GET]
@@ -1262,7 +1264,17 @@ Response 410 if the organisation has been deactivated.
                 "OrganisationName": "ACME UnitTesting PLC",
                 "OrganisationLogoUrl": "http://localhost/Images/default-company-logo.png",
                 "OrganisationIsOwner": false,
-                "LastUpdateDateTime": "2014-04-22T13:00:00.000"
+                "LastUpdateDateTime": "2014-04-22T13:00:00.000",
+                "Labels": [
+                    {
+                        "Id": 3,
+                        "Name": "Water"
+                    },
+                    {
+                        "Id": 4,
+                        "Name": "Electricity"
+                    }
+                ]
             },
             {
                 "JobName": "Test Job",
@@ -1289,7 +1301,17 @@ Response 410 if the organisation has been deactivated.
                 "OrganisationName": "ACME UnitTesting PLC",
                 "OrganisationLogoUrl": "http://localhost/Images/default-company-logo.png",
                 "OrganisationIsOwner": false,
-                "LastUpdateDateTime": "2014-04-22T13:00:00.000"
+                "LastUpdateDateTime": "2014-04-22T13:00:00.000",
+                "Labels": [
+                    {
+                        "Id": 3,
+                        "Name": "Water"
+                    },
+                    {
+                        "Id": 4,
+                        "Name": "Electricity"
+                    }
+                ]
             }
         ]
 
@@ -1350,7 +1372,8 @@ Response 410 if the organisation has been deactivated.
             "ClientCountry": "UK",
             "ClientPostcode": "AB22 9YX",
             "ClientContactNumber": "012345 679898",
-            "ClientEmail": "jobtestemail@jobtest.com"
+            "ClientEmail": "jobtestemail@jobtest.com",
+            "LabelsToAdd": [ 22, 23 ]
         }
 
 + Response 200
@@ -1380,7 +1403,17 @@ Response 410 if the organisation has been deactivated.
             "OrganisationName": "ACME UnitTesting PLC",
             "OrganisationLogoUrl": "http://localhost/Images/default-company-logo.png",
             "OrganisationIsOwner": false,
-            "LastUpdateDateTime": "2014-04-22T13:00:00.000"
+            "LastUpdateDateTime": "2014-04-22T13:00:00.000",
+            "Labels": [
+                {
+                    "Id": 22,
+                    "Name": "Bricks"
+                },
+                {
+                    "Id": 23,
+                    "Name": "Mortar"
+                }
+            ]
         }
 
 + Response 400
@@ -1400,6 +1433,7 @@ Response 410 if the organisation has been deactivated.
 + Response 410
 
 ## Job [/api/job/{jobId}]
+
 + Parameters 
     + jobId (required, int, `123`) ... id of the job.
 
@@ -1439,7 +1473,17 @@ Response 410 if the job has been deactivated.
             "OrganisationName": "ACME UnitTesting PLC",
             "OrganisationLogoUrl": "http://localhost/Images/default-company-logo.png",
             "OrganisationIsOwner": false,
-            "LastUpdateDateTime": "2014-04-22T13:00:00.000"
+            "LastUpdateDateTime": "2014-04-22T13:00:00.000",
+            "Labels": [
+                {
+                    "Id": 22,
+                    "Name": "Bricks"
+                },
+                {
+                    "Id": 23,
+                    "Name": "Mortar"
+                }
+            ]
         }
 
 + Response 403
@@ -1467,6 +1511,8 @@ Response 410 if the job has been deactivated.
 + ClientPostcode (string, 10 characters)
 + ClientContactNumber (string, 20 characters)
 + ClientEmail (string)
++ LabelsToAdd ([] int)
++ LabelsToRemove ([] int)
 
 Updates details for a single job. 
 
@@ -1496,7 +1542,9 @@ Response 410 if the job has been deactivated.
             "ClientCountry": "UK",
             "ClientPostcode": "AB22 9YX",
             "ClientContactNumber": "012345 679898",
-            "ClientEmail": "jobtestemail@jobtest.com"
+            "ClientEmail": "jobtestemail@jobtest.com",
+            "LabelsToAdd": [ 22, 23 ],
+            "LabelsToRemove": [ 19, 34 ]
         }
 
 + Response 204
