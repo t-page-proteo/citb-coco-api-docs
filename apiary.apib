@@ -1340,6 +1340,7 @@ Response 410 if the organisation has been deactivated.
 + ClientPostcode (string, 10 characters)
 + ClientContactNumber (string, 20 characters)
 + ClientEmail (string)
++ LabelsToAdd (int[])
 
 Create a new job for an organisation. 
 
@@ -1511,8 +1512,8 @@ Response 410 if the job has been deactivated.
 + ClientPostcode (string, 10 characters)
 + ClientContactNumber (string, 20 characters)
 + ClientEmail (string)
-+ LabelsToAdd ([] int)
-+ LabelsToRemove ([] int)
++ LabelsToAdd (int[])
++ LabelsToRemove (int[])
 
 Updates details for a single job. 
 
