@@ -1933,23 +1933,33 @@ Retrieves a list of available specialisms and their Ids
         [
             {
                 "Id": 1,
-                "Name": "General Builder"
+                "Name": "General Builder",
+                "Order": 10,
+                "IsChecked": true
             },
             {
                 "Id": 2,
-                "Name": "Plumbing"
+                "Name": "Plumbing",
+                "Order": 20,
+                "IsChecked": false
             },
             {
                 "Id": 3,
-                "Name": "Bricklaying"
+                "Name": "Bricklaying",
+                "Order": 30,
+                "IsChecked": false
             },
             {
                 "Id": 4,
-                "Name": "Glazing"
+                "Name": "Glazing",
+                "Order": 40,
+                "IsChecked": false
             },
             {
                 "Id": 5,
-                "Name": "Roofing"
+                "Name": "Roofing",
+                "Order": 50,
+                "IsChecked": false
             }
         ]
 
@@ -1961,29 +1971,47 @@ Retrieves a list of lists. Currently labels and specialisms
 + Response 200
 
         [
-          "SpecialismList": [
-            {
-              "Id": 22,
-              "Name": "Bricklaying"
-            },
-            {
-              "Id": 24,
-              "Name": "General Builder"
-            },
-            {
-              "Id": 23,
-              "Name": "Plumbing"
-            }
-          ],
-          "LabelsList": [
-            {
-              "Name": "Label 1"
-            },
-            {
-              "Name": "Label 2"
-            },
-            {
-              "Name": "label 3"
-            }
-          ]
+            "SpecialismList": [
+                {
+                    "Id": 1,
+                    "Name": "General Builder",
+                    "Order": 10,
+                    "IsChecked": true
+                },
+                {
+                    "Id": 2,
+                    "Name": "Plumbing",
+                    "Order": 20,
+                    "IsChecked": false
+                },
+                {
+                    "Id": 3,
+                    "Name": "Bricklaying",
+                    "Order": 30,
+                    "IsChecked": false
+                },
+                {
+                    "Id": 4,
+                    "Name": "Glazing",
+                    "Order": 40,
+                    "IsChecked": false
+                },
+                {
+                    "Id": 5,
+                    "Name": "Roofing",
+                    "Order": 50,
+                    "IsChecked": false
+                }
+            ],
+            "LabelsList": [
+                {
+                  "Name": "Label 1"
+                },
+                {
+                  "Name": "Label 2"
+                },
+                {
+                  "Name": "label 3"
+                }
+            ]
         ]
