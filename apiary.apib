@@ -1871,7 +1871,7 @@ Response 410 if the record has been deleted/deactivated.
 
 ## Job Documents [/api/job/{jobId}/document/{documentId}]
 
-Methods to attach or remove organisation (ie. existing) documents to a job
+Methods to attach or remove **organisation documents** (ie. existing documents) to a job
 
 + Parameters
     + jobId (int, `123`)        ... Job Id
@@ -1879,7 +1879,7 @@ Methods to attach or remove organisation (ie. existing) documents to a job
 
 ### Attach document to job [POST]
 
-Call this method to attach an existing organisation document to a job.
+Call this method to attach **an existing organisation document** to a job.
 
 Response 403 if the user doesn't have access to the job or organisation. This response will also be returned if the specified document belongs to a different organisation than the job parent organisation.
 
@@ -1904,11 +1904,21 @@ Response 410 if the job or document has been deleted/deactivated.
 
 ### Delete document from job [DELETE]
 
-Call this method to remove a document from a job. This does NOT delete the related Organisation Document, simply breaks the link between the document and the job.
+Call this method to remove a document from a job. This does **NOT** delete the related Organisation Document, simply breaks the link between the document and the job.
 
-DETAIL TO FOLLOW
+Response 403 if the user doesn't have access to the job or organisation.
+
+Response 404 if the job or specified document is not found. 
+
+Response 410 if the job or document has been deleted/deactivated.
 
 + Response 204
+
++ Response 403
+
++ Response 404
+
++ Response 410
 
 # Group Glossary
 Glossary type related resources and actions.
