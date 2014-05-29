@@ -553,7 +553,7 @@ Response 410 if the organisation is already flagged as deactivated.
 
 + Response 410
 
-## Organisation label list [/api/organisation/{organisationId}/Labels]
+## Organisation label list [/api/organisation/{organisationId}/labels]
 Lists the organisation labels that are available for use for the given organisation.
 
 + Parameters
@@ -593,7 +593,7 @@ Response 410 if the organisation is already flagged as deactivated.
 
 + Response 410
 
-## Organisation label - Create [/api/organisation/{organisationId}/Label]
+## Organisation label - Create [/api/organisation/{organisationId}/label]
 Create a new organisation label. At present, this method can only be utilised by the organisation owner.
 
 + Parameters
@@ -641,11 +641,13 @@ Response 410 if the organisation has been deactivated.
 
 + Response 410
 
-## Organisation label - Update/Delete [/api/organisation/{organisationId}/Label/{labelId}]
-Manage organisation labels. At present, these method can only be utilised by the organisation owner.
+## Organisation label - Update/Delete [/api/organisation/{organisationId}/label/{labelId}]
+Manage organisation labels. At present, these methods can only be utilised by the organisation owner.
+
+Alternatively, these methods can also be invoked using a non-organisationId specific URL. For example: **/api/organisation/label/{labelId}**. The methods will still perform the appropriate user access/write checks on the parent organisation and return a 400 status where applicable.
 
 + Parameters
-    + organisationId (int, `123`) ... owner organisation of target label.    
+    + organisationId (optional, int, `123`) ... owner organisation of target label.    
     + labelId (int, `123`) ... label this request relates to.
     
 ### Update a label [PUT]
@@ -1963,7 +1965,7 @@ Retrieves a list of available specialisms and their Ids
             }
         ]
 
-## Lists [/api/glossay/lists]
+## Lists [/api/glossary/lists]
 Retrieves a list of lists. Currently labels and specialisms
 
 ### Lists [GET]
