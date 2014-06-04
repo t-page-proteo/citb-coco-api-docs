@@ -593,6 +593,64 @@ Response 410 if the organisation is already flagged as deactivated.
 
 + Response 410
 
+### Create labels [POST]
+
+
+Creates new organisation labels. Label names will be checked for uniqueness (case-insensitive) and in the event an active label already exists with the requested text, the existing label will be returned instead.
+
+Response 400 if the request is invalid.
+
+Response 403 if the user doesn't have permission to perform label management (ie. isn't the org ownwer).
+
+Response 404 if the organisation is not found.
+
+Response 410 if the organisation has been deactivated.
+
++ Request (application/json)
+
+        {[
+            {
+                "Name": "TestLabel1"
+            },
+            {
+                "Name": "TestLabel2"
+            },
+            {
+                "Name": "TestLabel3"
+            }
+        ]}
++ Response 200
+
+        {[
+          {
+            "Id": 459,
+            "Name": "TestLabel1"
+          },
+          {
+            "Id": 460,
+            "Name": "TestLabel2"
+          },
+          {
+            "Id": 461,
+            "Name": "TestLabel3"
+          }
+        ]}
+
++ Response 400
+
+        {
+            "Message":"The request is invalid.",
+            "ModelState":{
+                "model.Name":["The Label name field is required."]
+            }
+        }
+
++ Response 403
+
++ Response 404
+
++ Response 410
+
 ## Organisation label - Create [/api/organisation/{organisationId}/label]
 Create a new organisation label. At present, this method can only be utilised by the organisation owner.
 
@@ -640,6 +698,7 @@ Response 410 if the organisation has been deactivated.
 + Response 404
 
 + Response 410
+
 
 ## Organisation label - Update/Delete [/api/organisation/{organisationId}/label/{labelId}]
 Manage organisation labels. At present, these methods can only be utilised by the organisation owner.
