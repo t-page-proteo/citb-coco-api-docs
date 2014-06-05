@@ -1721,6 +1721,57 @@ Response 410 if the job has already been deactivated.
 
 + Response 410
 
+## Job Documents [/api/job/{jobId}/document/{documentId}]
+
+Methods to attach or remove **organisation documents** (ie. existing documents) to a job
+
++ Parameters
+    + jobId (int, `123`)        ... Job Id
+    + documentId (int, `123`)   ... Document Id
+
+### Attach document to job [POST]
+
+Call this method to attach **an existing organisation document** to a job.
+
+Response 403 if the user doesn't have access to the job or organisation. This response will also be returned if the specified document belongs to a different organisation than the job parent organisation.
+
+Response 404 if the job or specified document is not found. 
+
+Response 410 if the job or document has been deleted/deactivated.
+
++ Response 200
+
+        {
+            "Id": 321,
+            "JobId": 123,
+            "Url": "https://citbconstructioncompanion.com:8443/api/document/321/content",
+            "CreateDateTime": "2014-05-23T12:04:17.403"
+        }
+
++ Response 403
+
++ Response 404
+
++ Response 410
+
+### Delete document from job [DELETE]
+
+Call this method to remove a document from a job. This does **NOT** delete the related Organisation Document, simply breaks the link between the document and the job.
+
+Response 403 if the user doesn't have access to the job or organisation.
+
+Response 404 if the job or specified document is not found. 
+
+Response 410 if the job or document has been deleted/deactivated.
+
++ Response 204
+
++ Response 403
+
++ Response 404
+
++ Response 410
+
 # Group Record
 Record related resources and actions.
 
@@ -1923,57 +1974,6 @@ Response 410 if the record has been deleted/deactivated.
         {
             "Url": "http://some/timeboxed/url/ae9841-c921-49ea-a53c-02eae247ad3a.mp4" 
         }
-
-+ Response 403
-
-+ Response 404
-
-+ Response 410
-
-## Job Documents [/api/job/{jobId}/document/{documentId}]
-
-Methods to attach or remove **organisation documents** (ie. existing documents) to a job
-
-+ Parameters
-    + jobId (int, `123`)        ... Job Id
-    + documentId (int, `123`)   ... Document Id
-
-### Attach document to job [POST]
-
-Call this method to attach **an existing organisation document** to a job.
-
-Response 403 if the user doesn't have access to the job or organisation. This response will also be returned if the specified document belongs to a different organisation than the job parent organisation.
-
-Response 404 if the job or specified document is not found. 
-
-Response 410 if the job or document has been deleted/deactivated.
-
-+ Response 200
-
-        {
-            "Id": 321,
-            "JobId": 123,
-            "Url": "https://citbconstructioncompanion.com:8443/api/document/321/content",
-            "CreateDateTime": "2014-05-23T12:04:17.403"
-        }
-
-+ Response 403
-
-+ Response 404
-
-+ Response 410
-
-### Delete document from job [DELETE]
-
-Call this method to remove a document from a job. This does **NOT** delete the related Organisation Document, simply breaks the link between the document and the job.
-
-Response 403 if the user doesn't have access to the job or organisation.
-
-Response 404 if the job or specified document is not found. 
-
-Response 410 if the job or document has been deleted/deactivated.
-
-+ Response 204
 
 + Response 403
 
