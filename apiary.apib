@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://citbconstructioncompanion.com:8443
+HOST: https://api.citbconstructioncompanion.com
 
 # CITB Construction Companion
 CITB Construction Companion API
@@ -163,7 +163,7 @@ Response 401 if the media type is not valid.
 
 + Response 200
 
-        {"PhotoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg"}
+        {"PhotoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg"}
 + Response 400
 
         {"Message": "Unsupported media content type"}
@@ -200,7 +200,7 @@ Response 404 if the user does not exist.
             "Country": "Countryland",
             "ContactTel": "01234 987 654",
             "ContactMobile": "07890 654 321",
-            "PhotoUrl": "http://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
+            "PhotoUrl": "http://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
             "NationalInsuranceNumber": "AB 11 22 33 Z"
         }
 
@@ -296,7 +296,7 @@ There is currently no validation on the values provided (other than ensuring req
                 "Country": "Countryland",
                 "ContactTel": "01234 567 890",
                 "ContactMobile": "07123 456 789"
-                "LogoUrl": "https://citbconstructioncompanion.com:8443/Images/default-company-logo.png",
+                "LogoUrl": "https://api.citbconstructioncompanion.com/Images/default-company-logo.png",
                 "CanEdit": true,
                 "IsOwner": true,
                 "Labels": [{
@@ -332,7 +332,7 @@ Response 410 if the organisation has been deactivated.
  
 + Response 200
 
-        {"LogoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg"}
+        {"LogoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg"}
         
 + Response 400
 
@@ -367,7 +367,7 @@ Retrieves a list of organisations. This reflects all of the organisations the us
                 "Country": "Countryland",
                 "ContactTel": "01234 567 890",
                 "ContactMobile": "07123 456 789"
-                "LogoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
+                "LogoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
                 "CanEdit": true,
                 "IsOwner": true,
                 "Labels": [
@@ -392,7 +392,7 @@ Retrieves a list of organisations. This reflects all of the organisations the us
                 "Country": null,
                 "ContactTel": null,
                 "ContactMobile": null
-                "LogoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02ea45447ad3a.jpg",
+                "LogoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02ea45447ad3a.jpg",
                 "CanEdit": false,
                 "IsOwner": false,
                 "Labels": [
@@ -417,7 +417,7 @@ Retrieves a list of organisations. This reflects all of the organisations the us
                 "Country": "Countryland",
                 "ContactTel": "01234 567 890",
                 "ContactMobile": "07123 456 789"
-                "LogoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02ea786647ad3a.jpg",
+                "LogoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02ea786647ad3a.jpg",
                 "CanEdit": false,
                 "IsOwner": false,
                 "Labels": [
@@ -479,7 +479,7 @@ Response 410 if the organisation has been deactivated.
             "Country": "Countryland",
             "ContactTel": "01234 567 890",
             "ContactMobile": "07123 456 789",
-            "LogoUrl": "https://citbconstructioncompanion.com:8443/userimages/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
+            "LogoUrl": "https://api.citbconstructioncompanion.com/userimages/ae9841-c921-49ea-a53c-02eae247ad3a.jpg",
             "CanEdit": true,
             "IsOwner": true,
             "Labels": [
@@ -568,24 +568,19 @@ Response 410 if the organisation is already flagged as deactivated.
 
 + Response 200
 
-        [
-            {
-                "Id": 123,
-                "Name": "Bricklaying"
-            },
-            {
-                "Id": 124,
-                "Name": "Glazing"
-            },
-            {
-                "Id": 125,
-                "Name": "Plumbing"
-            },
-            {
-                "Id": 126,
-                "Name": "Landscaping"
-            }
-        ]
+        [{
+            "Id": 123,
+            "Name": "Bricklaying"
+        }, {
+            "Id": 124,
+            "Name": "Glazing"
+        }, {
+            "Id": 125,
+            "Name": "Plumbing"
+        }, {
+            "Id": 126,
+            "Name": "Landscaping"
+        }]
 
 + Response 403
 
@@ -594,7 +589,6 @@ Response 410 if the organisation is already flagged as deactivated.
 + Response 410
 
 ### Create labels [POST]
-
 
 Creates new organisation labels. Label names will be checked for uniqueness (case-insensitive) and in the event an active label already exists with the requested text, the existing label will be returned instead.
 
@@ -608,33 +602,26 @@ Response 410 if the organisation has been deactivated.
 
 + Request (application/json)
 
-        {[
-            {
-                "Name": "TestLabel1"
-            },
-            {
-                "Name": "TestLabel2"
-            },
-            {
-                "Name": "TestLabel3"
-            }
-        ]}
+        [{
+            "Name": "TestLabel1"
+        }, {
+            "Name": "TestLabel2"
+        }, {
+            "Name": "TestLabel3"
+        }]
+        
 + Response 200
 
-        {[
-          {
+        [{
             "Id": 459,
             "Name": "TestLabel1"
-          },
-          {
+        }, {
             "Id": 460,
             "Name": "TestLabel2"
-          },
-          {
+        }, {
             "Id": 461,
             "Name": "TestLabel3"
-          }
-        ]}
+        }]
 
 + Response 400
 
@@ -794,7 +781,7 @@ Response 410 if the organisation has been deactivated.
                 "Country": "Countryland",
                 "ContactTel": "01234 567 890",
                 "ContactMobile": "07123 456 789",
-                "PhotoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
+                "PhotoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
                 "NationalInsuranceNumber": "AB112233Z",
                 "IsOwner": true,
                 "IsRegisteredUser": true,
@@ -815,7 +802,7 @@ Response 410 if the organisation has been deactivated.
                 "Country": "Countryland",
                 "ContactTel": "01234 567 891",
                 "ContactMobile": "07123 456 788",
-                "PhotoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
+                "PhotoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
                 "NationalInsuranceNumber": "AB112233Z",
                 "IsOwner": false,
                 "IsRegisteredUser": true,
@@ -836,7 +823,7 @@ Response 410 if the organisation has been deactivated.
                 "Country": "Countryland",
                 "ContactTel": "01234 567 892",
                 "ContactMobile": "07123 456 787",
-                "PhotoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
+                "PhotoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
                 "NationalInsuranceNumber": "AB112233Z",
                 "IsOwner": false,
                 "IsRegisteredUser": false,
@@ -912,7 +899,7 @@ Response 410 if the organisation has been deactivated.
             "Country": "Countryland",
             "ContactTel": "01234 567 890",
             "ContactMobile": "07123 456 789",
-            "PhotoUrl": "http://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
+            "PhotoUrl": "http://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
             "NationalInsuranceNumber": "AB112233Z",
             "IsOwner": false,
             "IsRegisteredUser": false,
@@ -965,7 +952,7 @@ Response 410 if the ***organisation*** has been deactivated (liable to change).
             "Country": "Countryland",
             "ContactTel": "01234 567 890",
             "ContactMobile": "07123 456 789",
-            "PhotoUrl": "http://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
+            "PhotoUrl": "http://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
             "NationalInsuranceNumber": "AB112233Z",
             "IsOwner": false,
             "IsRegisteredUser": false,
@@ -1082,7 +1069,7 @@ Response 410 if the ***organisation*** has been deactivated (liable to change).
 
 + Response 200
 
-        {"PhotoUrl": "https://citbconstructioncompanion.com:8443/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg"}
+        {"PhotoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg"}
         
 + Response 400
 
@@ -1218,7 +1205,7 @@ Response 410 if the organisation has been deleted.
             {
                 "OrganisationId": 123,
                 "Id": 1,
-                "Url": "https://citbconstructioncompanion.com:8443/api/document/1/content",
+                "Url": "https://api.citbconstructioncompanion.com/api/document/1/content",
                 "Description": "My risk assessment",
                 "OriginalFilename": "My Risk Assessment.docx",
                 "CreateDateTime": "2014-03-07T12:04:17.403",
@@ -1231,7 +1218,7 @@ Response 410 if the organisation has been deleted.
             {
                 "OrganisationId": 123,
                 "Id": 2,
-                "Url": "https://citbconstructioncompanion.com:8443/api/document/2/content",
+                "Url": "https://api.citbconstructioncompanion.com/api/document/2/content",
                 "Description": "My safety policy",
                 "OriginalFilename": "My Safety Policy.pdf",
                 "CreateDateTime": "2014-03-07T12:04:17.403"
@@ -1267,7 +1254,7 @@ Response 415 if the file extension is not an allowed type; the file extension is
         {
             "Id": 123,
             "OrganisationId": 123,
-            "Url": "https://citbconstructioncompanion.com:8443/api/document/123/content",
+            "Url": "https://api.citbconstructioncompanion.com/api/document/123/content",
             "CreateDateTime": "2014-03-07T12:04:17.403"
         }
         
@@ -1292,34 +1279,31 @@ Response 410 if the job has been deleted.
 
 + Response 200 (application/json)
 
-        [
-            {
-                "Id": 1,
-                "JobId": 321,
-                "Url": "https://citbconstructioncompanion.com:8443/api/document/1/content",
-                "Description": "Risk assessment",
-                "OriginalFilename": "My Risk Assessment.docx",
-                "CreateDateTime": "2014-05-25T12:04:17.403",
-                "CanEdit": true,
-                "Labels": [
-                    { "Id": 1, "Name": "Bricks" },
-                    { "Id": 2, "Name": "Mortar" }
-                ]
-            },
-            {
-                "Id": 2,
-                "JobId": 321,
-                "Url": "https://citbconstructioncompanion.com:8443/api/document/2/content",
-                "Description": "Safety policy",
-                "OriginalFilename": "My Safety Policy.pdf",
-                "CreateDateTime": "2014-05-25T12:04:17.403",
-                "CanEdit": true,
-                "Labels": [
-                    { "Id": 2, "Name": "Mortar" },
-                    { "Id": 3, "Name": "Plumbline" }
-                ]
-            }
-        ]
+        [{
+            "Id": 1,
+            "JobId": 321,
+            "Url": "https://api.citbconstructioncompanion.com/api/document/1/content",
+            "Description": "Risk assessment",
+            "OriginalFilename": "My Risk Assessment.docx",
+            "CreateDateTime": "2014-05-25T12:04:17.403",
+            "CanEdit": true,
+            "Labels": [
+                { "Id": 1, "Name": "Bricks" },
+                { "Id": 2, "Name": "Mortar" }
+            ]
+        }, {
+            "Id": 2,
+            "JobId": 321,
+            "Url": "https://api.citbconstructioncompanion.com/api/document/2/content",
+            "Description": "Safety policy",
+            "OriginalFilename": "My Safety Policy.pdf",
+            "CreateDateTime": "2014-05-25T12:04:17.403",
+            "CanEdit": true,
+            "Labels": [
+                { "Id": 2, "Name": "Mortar" },
+                { "Id": 3, "Name": "Plumbline" }
+            ]
+        }]
         
 + Response 403
 
@@ -1345,7 +1329,7 @@ Response 415 if the file extension is not an allowed type; the file extension is
         {
             "Id": 321,
             "JobId": 123,
-            "Url": "https://citbconstructioncompanion.com:8443/api/document/321/content",
+            "Url": "https://api.citbconstructioncompanion.com/api/document/321/content",
             "CreateDateTime": "2014-05-23T12:04:17.403"
         }
         
@@ -1721,32 +1705,52 @@ Response 410 if the job has already been deactivated.
 
 + Response 410
 
-## Job Documents [/api/job/{jobId}/document/{documentId}]
-
-Methods to attach or remove **organisation documents** (ie. existing documents) to a job
+## Job Document Attach [/api/job/{jobId}/document]
 
 + Parameters
     + jobId (int, `123`)        ... Job Id
-    + documentId (int, `123`)   ... Document Id
 
-### Attach document to job [POST]
+### Attach organisation document to job [POST]
 
 Call this method to attach **an existing organisation document** to a job.
 
-Response 403 if the user doesn't have access to the job or organisation. This response will also be returned if the specified document belongs to a different organisation than the job parent organisation.
+Response 403 if the user doesn't have access to the job or organisation. This response will also be returned if any specified document belongs to a different organisation than the job parent organisation.
 
-Response 404 if the job or specified document is not found. 
+Response 404 if the job or any specified document is not found. 
 
-Response 410 if the job or document has been deleted/deactivated.
+Response 410 if the job or any specified document has been deleted/deactivated.
 
++ Request (application/json)
+
+        [321, 322]
+        
 + Response 200
 
-        {
+        [{
             "Id": 321,
             "JobId": 123,
-            "Url": "https://citbconstructioncompanion.com:8443/api/document/321/content",
-            "CreateDateTime": "2014-05-23T12:04:17.403"
-        }
+            "Url": "https://api.citbconstructioncompanion.com/api/document/321/content",
+            "Description": "Risk assessment",
+            "OriginalFilename": "My Risk Assessment.docx",
+            "CreateDateTime": "2014-05-25T12:04:17.403",
+            "CanEdit": true,
+            "Labels": [
+                { "Id": 1, "Name": "Bricks" },
+                { "Id": 2, "Name": "Mortar" }
+            ]
+        }, {
+            "Id": 322,
+            "JobId": 123,
+            "Url": "https://api.citbconstructioncompanion.com/api/document/322/content",
+            "Description": "Safety policy",
+            "OriginalFilename": "My Safety Policy.pdf",
+            "CreateDateTime": "2014-05-25T12:04:17.403",
+            "CanEdit": true,
+            "Labels": [
+                { "Id": 2, "Name": "Mortar" },
+                { "Id": 3, "Name": "Plumbline" }
+            ]
+        }]
 
 + Response 403
 
@@ -1754,7 +1758,13 @@ Response 410 if the job or document has been deleted/deactivated.
 
 + Response 410
 
-### Delete document from job [DELETE]
+## Job Document Remove [/api/job/{jobId}/document/{documentId}]
+
++ Parameters
+    + jobId (int, `123`)        ... Job Id
+    + documentId (int, `123`)   ... Document Id
+
+### Remove organisation document from job [DELETE]
 
 Call this method to remove a document from a job. This does **NOT** delete the related Organisation Document, simply breaks the link between the document and the job.
 
