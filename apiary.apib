@@ -500,6 +500,70 @@ Response 410 if the organisation has been deactivated.
 
 + Response 410
 
+## Organisation summary [/api/organisation/{organisationId}/summary?employeeCount={employeeCount}&jobCount={jobCount}&documentCount={documentCount}]
+Retrieve summary details of an organisation's employees, jobs and documents for the organisation's dashboard.
+
++ Parameters
+    + organisationId (int, `123`) ... the organisation to be retrieved.
+    + employeeCount (int, `6`) ... the maximum number of employees to include.
+    + jobCount (int, `5`) ... the maximum number of jobs to include.
+    + documentCount (int, `5`) ... the maximum number of documents to include.
+
+### Get the organisation summary [GET]
+Only the specified number of employees, jobs and documents will be returned.  However, a count is returned for each to indicate the total number available.
+
+Response 403 if the requesting user doesn't have a relationship with the organisation. 
+
+Response 404 if the organisation doesn't exist. 
+
+Response 410 if the organisation has been deactivated.
+
++ Response 200 (application/json)
+
+        {
+            "EmployeeCount": 2,
+            "Employees": [
+                {
+                    "Id": 1,
+                    "FirstName": "Robert",
+                    "LastName": "Builder",
+                    "PhotoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
+                    "IsMe": true
+                },
+                {
+                    "Id": 2,
+                    "FirstName": "Simon",
+                    "LastName": "Wraight",
+                    "PhotoUrl": "https://api.citbconstructioncompanion.com/userimages/aeb09841-c921-49ea-a53c-02eae247ad3a.jpg",
+                    "IsMe": false
+                }
+            ],
+            "JobCount": 1,
+            "Jobs": [
+                {
+                    "JobName": "New Front Entrance",
+                    "Id": 1428,
+                    "StartDate": "2014-06-03T23:00:00",
+                    "EndDate": "2014-07-23T23:00:00"
+                }
+            ],
+            "DocumentCount": 1,
+            "Documents": [
+                {
+                    "Id": 497,
+                    "Url": "https://api.citbconstructioncompanion.com/api/document/497/content",
+                    "Description": "My risk assessment",
+                    "Labels": ["TestLabel1", "TestLabel2"]
+                }
+            ]
+        }
+
++ Response 403
+
++ Response 404
+
++ Response 410
+
 ### Update an organisation [PUT]
 Update an organisation's details. 
 
